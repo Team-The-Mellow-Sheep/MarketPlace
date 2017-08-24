@@ -1,0 +1,11 @@
+.footer-bottom{
+  background-color:black;
+  padding:16px;
+   position:fixed; 
+  bottom:0;
+  width:100%; 
+   z-index: 10;
+}
+.footer-bottom .right{
+  padding-left: 300px;
+}
