@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
 
 import { Router } from '@angular/router';
 
@@ -6,7 +12,17 @@ import { Router } from '@angular/router';
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html'
 })
-export class SignInFormComponent {
-
-  constructor() { }
+export class SignInFormComponent implements OnInit {
+  signInForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
+  ngOnInit() {
+    this.signInForm = this.formBuilder.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+  }
+  onSignInFormSubmit() {
+    const formControls = this.signInForm.controls;
+    console.log(formControls['email'].value);
+  }
 }
