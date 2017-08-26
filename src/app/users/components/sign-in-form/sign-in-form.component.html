@@ -1,18 +1,22 @@
 <div class="container">
-  <form class="form-signin text-center">
-    <h2 class="form-signin-heading">Sign in to your account</h2>
-    <div class="form-group">
-      <label for="sign-in-email" class="sr-only">Email address</label>
-      <input type="email" id="sign-in-email" class="form-control" placeholder="Email address" formControlName="email" required>
-    </div>
-    <div class="form-group">
-      <label for="sign-in-password" class="sr-only">Password</label>
-      <input type="password" id="sign-in-password" class="form-control" placeholder="Password" formControlName="password" required>
-    </div>
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <form class="form-signin text-center">
+        <h2 class="form-signin-heading">Sign in to your account</h2>
+        <div class="form-group">
+          <label for="sign-in-email" class="sr-only">Email address</label>
+          <input type="email" id="sign-in-email" class="form-control" placeholder="Email address" formControlName="email" required>
+        </div>
+        <div class="form-group">
+          <label for="sign-in-password" class="sr-only">Password</label>
+          <input type="password" id="sign-in-password" class="form-control" placeholder="Password" formControlName="password" required>
+        </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <div class="margin-top-10">
-      <a class="login-link" routerLink="/users/sign-up">You don't have an account? Register here!</a>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <div class="margin-top-10">
+          <a class="login-link" routerLink="/users/sign-up">You don't have an account? Register here!</a>
+        </div>
+      </form>
+      <div>
+      </div>
     </div>
-  </form>
-</div>
