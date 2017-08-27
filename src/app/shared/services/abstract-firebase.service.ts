@@ -9,6 +9,13 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
   constructor(private db: AngularFireDatabase) {
     this.list = db.list(this.entityPath);
   }
+  get(entityId: string) {
+    return this.db.object(`${this.entityPath}/${entityId}`);
+  }
+
+  getList(options?: Object) {
+    return this.db.list(`${this.entityPath}`, options);
+  }
   create(entity: T) {
     return this.list.push(entity);
   }
@@ -19,5 +26,3 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
 interface IEntity {
   $key?: string;
 }
-
-
