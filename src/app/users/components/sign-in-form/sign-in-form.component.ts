@@ -23,6 +23,5 @@ export class SignInFormComponent implements OnInit {
   }
   onSignInFormSubmit() {
     const formControls = this.signInForm.controls;
-    console.log(formControls['email'].value);
   }
 }

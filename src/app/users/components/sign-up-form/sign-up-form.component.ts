@@ -28,10 +28,8 @@ export class SignUpFormComponent implements OnInit {
 
   onSignUpFormSubmit() {
     const formControls = this.signUpForm.controls;
-    console.log(formControls['username'].value);
     this.authService.register(formControls['username'].value, formControls['email'].value, formControls['password'].value)
       .then((data) => {
-        console.log(data);
         return this.router.navigate(['/']);
       })
       .catch((error) => {
