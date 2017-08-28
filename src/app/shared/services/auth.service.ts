@@ -5,7 +5,7 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-
+  uid;
   user: Observable<firebase.User>;
   // state = firebase.auth().currentUser;
   constructor(public afAuth: AngularFireAuth) {
@@ -44,9 +44,10 @@ export class AuthService {
   signOut(): void {
     this.afAuth.auth.signOut();
     localStorage.removeItem('loggedUserId');
+    this.uid.unsubscribe();
   }
   private setUserId(state): void {
-    const uid = this.afAuth.authState.subscribe(user => user.uid);
+    this.uid = this.afAuth.authState.subscribe(user => user.uid);
     localStorage.setItem('loggedUserId', state.uid);
   }
 }
