@@ -33,7 +33,6 @@ export class SignUpFormComponent implements OnInit {
         return this.router.navigate(['/']);
       })
       .catch((error) => {
-        console.log(error);
         this.router.navigate(['/']);
       });
   }

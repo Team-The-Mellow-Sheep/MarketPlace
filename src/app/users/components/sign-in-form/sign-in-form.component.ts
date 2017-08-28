@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class SignInFormComponent implements OnInit {
   signInForm: FormGroup;
+  authError: string;
   constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
@@ -26,12 +27,12 @@ export class SignInFormComponent implements OnInit {
   onSignInFormSubmit() {
     const formControls = this.signInForm.controls;
     this.authService.signIn(formControls['email'].value, formControls['password'].value)
-      .then((data) => {
-        this.router.navigate(['/']);
-      })
-      .catch((error) => {
-        console.log(error);
-        this.router.navigate(['/']);
+      .then((error) => {
+        if (error) {
+          this.authError = error.message;
+        } else {
+          this.router.navigate(['/']);
+        }
       });
   }
 }

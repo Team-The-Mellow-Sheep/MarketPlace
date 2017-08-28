@@ -38,6 +38,7 @@ export class AuthService {
       .then((state: AngularFireAuth) => this.setUserId(state))
       .catch(err => {
         console.log('Something went wrong:', err.message);
+        return err;
       });
   }
 
