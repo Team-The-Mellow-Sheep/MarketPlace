@@ -12,14 +12,14 @@ export class AuthService {
     this.user = afAuth.authState;
   }
 
+  // for app.component
   get authState(): Observable<firebase.User> {
     return this.afAuth.authState;
   }
-  get userId(): string {
-    const userId = localStorage.getItem('loggedUserId');
-
-    return userId !== null ? userId : '';
-  }
+  /*   get userId(): string {
+      const userId = localStorage.getItem('loggedUserId');
+      return userId !== null ? userId : '';
+    } */
 
   register(username: string, email: string, password: string) {
     return this.afAuth
@@ -27,7 +27,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((state: AngularFireAuth) => this.setUserId(state))
       .catch(err => {
-        console.log('Something went wrong:', err.message);
+        return err;
       });
   }
 
@@ -37,7 +37,6 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((state: AngularFireAuth) => this.setUserId(state))
       .catch(err => {
-        console.log('Something went wrong:', err.message);
         return err;
       });
   }

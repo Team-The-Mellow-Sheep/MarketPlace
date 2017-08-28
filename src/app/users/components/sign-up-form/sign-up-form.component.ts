@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 
 export class SignUpFormComponent implements OnInit {
   signUpForm: FormGroup;
+  authError: string;
   constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
@@ -29,11 +30,12 @@ export class SignUpFormComponent implements OnInit {
   onSignUpFormSubmit() {
     const formControls = this.signUpForm.controls;
     this.authService.register(formControls['username'].value, formControls['email'].value, formControls['password'].value)
-      .then((data) => {
-        return this.router.navigate(['/']);
-      })
-      .catch((error) => {
-        this.router.navigate(['/']);
+      .then((error) => {
+        if (error) {
+          this.authError = error.message;
+        } else {
+          this.router.navigate(['/']);
+        }
       });
   }
 }

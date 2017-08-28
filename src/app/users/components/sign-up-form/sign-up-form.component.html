@@ -2,6 +2,9 @@
   <div class="row">
     <div class="col-md-6 offset-3">
       <form class="form-signin text-center" (ngSubmit)="onSignUpFormSubmit()" [formGroup]="signUpForm">
+        <div *ngIf="authError" class="alert alert-danger" role="alert">
+          {{authError}}
+        </div>
         <h2 class="form-signin-heading">Register a new account</h2>
         <div class="form-group">
           <label for="sign-up-username" class="sr-only">User name</label>
