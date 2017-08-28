@@ -1,3 +1,4 @@
+import { AuthService } from './../../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -10,11 +11,13 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in-form',
-  templateUrl: './sign-in-form.component.html'
+  templateUrl: './sign-in-form.component.html',
+  providers: [AuthService]
 })
 export class SignInFormComponent implements OnInit {
   signInForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  authError: string;
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required]],
@@ -23,5 +26,13 @@ export class SignInFormComponent implements OnInit {
   }
   onSignInFormSubmit() {
     const formControls = this.signInForm.controls;
+    this.authService.signIn(formControls['email'].value, formControls['password'].value)
+      .then((error) => {
+        if (error) {
+          this.authError = error.message;
+        } else {
+          this.router.navigate(['/']);
+        }
+      });
   }
 }

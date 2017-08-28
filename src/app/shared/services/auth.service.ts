@@ -5,21 +5,21 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-
+  uid;
   user: Observable<firebase.User>;
   // state = firebase.auth().currentUser;
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
   }
 
+  // for app.component
   get authState(): Observable<firebase.User> {
     return this.afAuth.authState;
   }
-  get userId(): string {
-    const userId = localStorage.getItem('loggedUserId');
-
-    return userId !== null ? userId : '';
-  }
+  /*   get userId(): string {
+      const userId = localStorage.getItem('loggedUserId');
+      return userId !== null ? userId : '';
+    } */
 
   register(username: string, email: string, password: string) {
     return this.afAuth
@@ -27,7 +27,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((state: AngularFireAuth) => this.setUserId(state))
       .catch(err => {
-        console.log('Something went wrong:', err.message);
+        return err;
       });
   }
 
@@ -37,16 +37,17 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((state: AngularFireAuth) => this.setUserId(state))
       .catch(err => {
-        console.log('Something went wrong:', err.message);
+        return err;
       });
   }
 
   signOut(): void {
     this.afAuth.auth.signOut();
     localStorage.removeItem('loggedUserId');
+    this.uid.unsubscribe();
   }
   private setUserId(state): void {
-    const uid = this.afAuth.authState.subscribe(user => user.uid);
+    this.uid = this.afAuth.authState.subscribe(user => user.uid);
     localStorage.setItem('loggedUserId', state.uid);
   }
 }
