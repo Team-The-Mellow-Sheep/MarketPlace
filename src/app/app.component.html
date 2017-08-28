@@ -3,28 +3,28 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <li class="nav-item active" routerLinkActive="active">
-        <a class="nav-link" routerLink="/home">Market Place <span class="sr-only">(current)</span></a>
+        <a class="nav-link fa fa-home" routerLink="/home"> Market Place <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <ul class="navbar-nav mr-right my-2 my-lg-0">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/users/sign-in" *ngIf="!isAuthenticated">
-        <span class="glyphicon glyphicon-log-in"></span>Login 
+        <span class="fa fa-sign-in"></span> Login 
       </a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/users/sign-up" *ngIf="!isAuthenticated">
-        <span class="glyphicon glyphicon-user"></span>Register
+        <span class="fa fa-user-plus"></span> Register
       </a>
       </li>
       <li>
         <a class="nav-link active" routerLink="/users/shopCart" *ngIf="isAuthenticated">
-          <img src="../assets/img/shopCart.png" width="20px"/>
+          <span class="fa fa-shopping-cart" aria-hidden="true"></span>
         </a>
       </li>
       <li class="nav-link active" *ngIf="isAuthenticated">
         <a (click)="onSignOutClick()" routerLink="/">
-          <span class="glyphicon glyphicon-log-out"></span>Logout
+          <span class="fa fa-sign-out"></span> Logout
         </a>
       </li>
     </ul>
