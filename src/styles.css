@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background-color: rgba(237, 239, 241, 0.50);
+}
 .form-signin {
   max-width: 90%;
   width: 700px;
