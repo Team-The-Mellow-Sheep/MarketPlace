@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
+  styleUrls: ['../user.component.css'],
   providers: [AuthService]
 })
 export class SignInFormComponent implements OnInit {

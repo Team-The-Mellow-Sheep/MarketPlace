@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
+  styleUrls: ['../user.component.css'],
   providers: [AuthService]
 })
 

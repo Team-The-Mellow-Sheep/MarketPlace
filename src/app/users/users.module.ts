@@ -4,7 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   SignInFormComponent,
-  SignUpFormComponent
+  SignUpFormComponent,
+  ShoppingCartComponent
 } from './components';
 
 import { UsersRoutingModule } from './users-routing.module';
@@ -18,6 +19,7 @@ import { UsersRoutingModule } from './users-routing.module';
   declarations: [
     SignInFormComponent,
     SignUpFormComponent,
+    ShoppingCartComponent
   ],
   providers: [],
 })
