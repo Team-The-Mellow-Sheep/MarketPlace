@@ -18,11 +18,11 @@
       </a>
       </li>
       <li>
-        <a class="nav-link active" routerLink="/users/shopCart" *ngIf="isAuthenticated">
+        <a class="nav-link" routerLink="/users/shopCart" *ngIf="isAuthenticated">
           <span class="fa fa-shopping-cart" aria-hidden="true"></span>
         </a>
       </li>
-      <li class="nav-link active" *ngIf="isAuthenticated">
+      <li class="nav-link" *ngIf="isAuthenticated">
         <a (click)="onSignOutClick()" routerLink="/">
           <span class="fa fa-sign-out"></span> Logout
         </a>
@@ -33,7 +33,6 @@
 
 <main>
   <router-outlet></router-outlet>
-  <!-- there is home page rout and view template html -->
 </main>
 
 <div class="footer-bottom">
