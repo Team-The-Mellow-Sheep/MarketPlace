@@ -36,3 +36,9 @@ border-radius:10px;
 .btn{
 cursor: pointer;
 }
+td a, td button{
+  font-size: 10px;
+  width: 100px;
+  text-align: center;
+  padding: 0px;
+}
