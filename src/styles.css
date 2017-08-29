@@ -2,12 +2,3 @@
 body{
   background-color: rgba(237, 239, 241, 0.50);
 }
-.form-signin {
-  max-width: 90%;
-  width: 700px;
-  margin: 30px auto;
-  position: relative;
-  padding: 24px 23px 20px;
-  background-color: #edeff1;
-  border-radius: 6px;
-}

@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   SignInFormComponent,
   SignUpFormComponent,
+  ShoppingCartComponent
 } from './components';
 
 const usersRoutes: Routes = [
@@ -15,6 +16,10 @@ const usersRoutes: Routes = [
   {
     path: 'users/sign-up',
     component: SignUpFormComponent,
+  },
+  {
+    path: 'users/shopCart',
+    component: ShoppingCartComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
