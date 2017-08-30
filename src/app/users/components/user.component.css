@@ -50,6 +50,11 @@ font-size: 10px;
   font-weight: bold;
   font-size:13px;
 }
-
+.btn-lg{
+  font-weight: bold;
+  font-size:13px;
+  padding-bottom: 25px;
+  margin: inherit;
+}
 
 

@@ -10,18 +10,18 @@ import {
 
 const usersRoutes: Routes = [
   {
-    path: 'users/sign-in',
+    path: 'sign-in',
     component: SignInFormComponent,
   },
   {
-    path: 'users/sign-up',
+    path: 'sign-up',
     component: SignUpFormComponent,
   },
   {
-    path: 'users/shopCart',
+    path: 'shopCart',
     component: ShoppingCartComponent,
   },
-  { path: '**', component: NotFoundComponent },
+  // { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
