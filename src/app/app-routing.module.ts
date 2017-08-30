@@ -7,7 +7,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  // { path: '**', component: NotFoundComponent }
+  { path: 'users', loadChildren: './users/users.module#UsersModule' },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

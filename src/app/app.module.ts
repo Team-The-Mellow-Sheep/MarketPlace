@@ -1,7 +1,6 @@
-import { UsersModule } from './users/users.module';
 import { HomeModule } from './home/home.module';
-import { AppRoutingModule } from './app-routing.module';
 import { NotFoundModule } from './not-found/not-found.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -20,7 +19,6 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     NotFoundModule,
     HomeModule,
-    UsersModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule
