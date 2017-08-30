@@ -12,7 +12,7 @@
 }
 
 .shopping-cart-container {
-  margin-top: 12%;
+  margin-top: 6%;
   display: flex;
   align-content: center;
   align-items: center;
@@ -20,7 +20,7 @@
 }
 .table td, .table th, .table tr{
 padding: 8px;
-border-radius:10px;
+/* border-radius:10px; */
 }
 .table tr {
   display: table-row;
@@ -35,10 +35,26 @@ border-radius:10px;
 }
 .btn{
 cursor: pointer;
+font-size:10px;
+/* width:100%;
+padding: auto; */
+width:50%;
+padding: initial;
+height: 30px;
 }
-td a, td button{
+td a, td btn{
   font-size: 10px;
-  width: 100px;
-  text-align: center;
-  padding: 0px;
+  padding: inherit;
+}
+.buy {
+  background-color: #897B9A;
+  color: #F1EAEA;
+  /* font-weight: bold;
+  box-sizing: border-box; */
+} 
+.buy h2{
+  line-height: normal;
+}
+.table-responsive{
+  background-color:rgb(237, 235, 235);
 }

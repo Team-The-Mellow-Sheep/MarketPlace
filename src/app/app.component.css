@@ -2,9 +2,8 @@ main {
      min-height:600px;
      max-width: 90%;
      margin: 0 auto;
-  /* margin-bottom: 100px; */
-  /* clear: both; */
 }
+
 .footer-bottom{
   background-color:black;
   padding:16px;
