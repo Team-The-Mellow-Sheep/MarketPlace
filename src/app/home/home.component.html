@@ -8,9 +8,9 @@
         <img src="../../assets/img/samsung-alaxy-j7-2016-background.png">
       </div>
       <div class="col-sm-4 contact">
-        <h2 class="mt-4"><a class="nav-link" routerLink="/about">Contact Us</a></h2>
+        <h2 class="mt-4"><a class="nav-link" routerLink="/about">Contact</a></h2>
         <address>
-          <strong>Start Bootstrap</strong>
+          <strong>Start find us</strong>
           <br>3481 Melrose Place Samsung mobile phone
           <br>Beverly Hills, CA 90210 BURGAS :)
           <br>
@@ -41,42 +41,20 @@
     </div>
   </div>
   <!-- /.row -->
-
+  <hr />
   <div class="row">
-    <div class="col-sm-4 my-4">
+    <div *ngFor="let homePhone of homePhones | async" class="col-sm-3 my-3">
       <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        <div class="imgColor">
+          <img class="card-img-top" src="{{homePhone.image}}" alt="">
+        </div>
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+          <h4 class="card-title">{{homePhone.title}}</h4>
+          <p class="card-text">{{homePhone.display}}</p>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 my-4">
-      <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam
-            ut praesentium aut.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 my-4">
-      <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
+          <!-- todo get $key for routerLink prop -->
+          <a href="/product" class="btn btn-primary">More for this product</a>
         </div>
       </div>
     </div>

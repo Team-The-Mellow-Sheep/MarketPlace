@@ -1,6 +1,9 @@
+import { AuthService } from './../shared/services/auth.service';
 // import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { NgModule } from '@angular/core';
+import { HomeService } from './services';
+
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -8,6 +11,10 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     // HomeRoutingModule,
   ],
-  declarations: [HomeComponent]
+  declarations: [HomeComponent],
+  providers: [
+    HomeService,
+    AuthService
+  ]
 })
 export class HomeModule { }

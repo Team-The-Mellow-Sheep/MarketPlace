@@ -10,8 +10,11 @@
   text-overflow: ellipsis;
   background-color: #edeff1;
 }
-.card-text{
-  height: 15vh;
+h4, .card-text{
+  height: 6vh; 
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  overflow: hidden;
 }
 .container{
   background-color: #edeff1;
@@ -20,4 +23,7 @@
 .contact{
   background-color: rgba(247, 247, 249, 0.48);
   border-radius: 10px;
+}
+.imgColor{
+ margin: auto;
 }
