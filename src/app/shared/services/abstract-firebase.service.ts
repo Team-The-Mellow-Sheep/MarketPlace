@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -6,7 +7,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export abstract class AbstractFirebaseService<T extends IEntity> {
   protected abstract get entityPath(): string;
   protected list: FirebaseListObservable<any[]>;
-  constructor(private db: AngularFireDatabase) {
+  constructor(protected db: AngularFireDatabase, protected authService: AuthService) {
     this.list = db.list(this.entityPath);
   }
   get(entityId: string) {
@@ -23,6 +24,6 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
     return this.list.remove(entity.$key);
   }
 }
-interface IEntity {
+export interface IEntity {
   $key?: string;
 }
