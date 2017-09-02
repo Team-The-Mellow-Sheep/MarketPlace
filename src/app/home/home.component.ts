@@ -1,5 +1,3 @@
-// import { Home } from './models/home';
-
 import { HomeService } from './services/home.service';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
