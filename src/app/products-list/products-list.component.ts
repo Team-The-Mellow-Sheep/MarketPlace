@@ -15,5 +15,6 @@ export class ProductsListComponent {
 
   product: Observable<any[]>;
   constructor(private productsListService: ProductsListService) {
+    this.product = this.productsListService.getLatestThreeItems();
   }
 }
