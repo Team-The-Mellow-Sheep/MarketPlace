@@ -1,8 +1,7 @@
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './../shared/services/auth.service';
 import { ProductService } from './services/product.service';
 
-
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Params, ActivatedRoute, Router } from '@angular/router';

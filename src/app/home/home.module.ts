@@ -1,7 +1,7 @@
+import { ProductsListService } from './../products-list/services/products-list.service';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './../shared/services/auth.service';
 import { HomeComponent } from './home.component';
-import { HomeService } from './services';
 
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [HomeComponent],
   providers: [
-    HomeService,
+    ProductsListService,
     AuthService
   ]
 })

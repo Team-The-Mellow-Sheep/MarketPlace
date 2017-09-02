@@ -1,10 +1,9 @@
 import { ProductsListService } from './services/products-list.service';
 
-
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Params, ActivatedRoute, Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+
 
 @Component({
   selector: 'app-product-list',
@@ -13,8 +12,9 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ProductsListComponent {
 
-  product: Observable<any[]>;
+  products: Observable<any[]>;
   constructor(private productsListService: ProductsListService) {
-    this.product = this.productsListService.getLatestThreeItems();
+    this.productsListService.getListProduct(20);
+    this.products = this.productsListService.getLatestTwentyItems();
   }
 }
