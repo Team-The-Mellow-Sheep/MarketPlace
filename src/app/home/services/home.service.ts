@@ -16,7 +16,7 @@ import { AuthService, AbstractFirebaseService } from '../../shared/services';
 @Injectable()
 export class HomeService extends AbstractFirebaseService<{ $key: string }> {
   private homeListProduct: FirebaseListObservable<any[]>;
-  public items;
+
   constructor(
     protected db: AngularFireDatabase,
     protected authService: AuthService
