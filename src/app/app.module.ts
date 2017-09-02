@@ -1,3 +1,4 @@
+import { ProductModule } from './product/product.module';
 import { HomeModule } from './home/home.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,9 +20,10 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     NotFoundModule,
     HomeModule,
+    ProductModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

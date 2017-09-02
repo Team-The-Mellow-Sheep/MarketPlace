@@ -1,4 +1,4 @@
-import { IEntity } from './../../shared/services/abstract-firebase.service';
+/* import { IEntity } from './../../shared/services/abstract-firebase.service';
 
 export class Home implements IEntity {
   constructor(
@@ -7,3 +7,5 @@ export class Home implements IEntity {
     public $key: string
   ) { }
 }
+ */
+

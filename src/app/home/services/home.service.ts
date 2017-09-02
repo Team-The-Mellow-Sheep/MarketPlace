@@ -1,9 +1,8 @@
-import { Home } from './../models';
-import { element } from 'protractor';
+// import { Home } from './../models';
 import { Injectable, Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { AngularFireModule } from 'angularFire2';
+// import { AngularFireModule } from 'angularFire2';
 import {
   FirebaseListObservable,
   FirebaseObjectObservable,
@@ -15,7 +14,7 @@ import { AuthService, AbstractFirebaseService } from '../../shared/services';
 
 
 @Injectable()
-export class HomeService extends AbstractFirebaseService<Home> {
+export class HomeService extends AbstractFirebaseService<{ $key: string }> {
   private homeListProduct: FirebaseListObservable<any[]>;
   public items;
   constructor(
@@ -29,7 +28,7 @@ export class HomeService extends AbstractFirebaseService<Home> {
   get entityPath(): string {
     return `/smartphones`;
   }
-  getLatestThreeItems(): Observable<Home[]> {
+  getLatestThreeItems(): Observable<any[]> {
     return this.homeListProduct.map((item) => {
       const items = [];
 
