@@ -15,6 +15,6 @@ export class ProductsListComponent {
   products: Observable<any[]>;
   constructor(private productsListService: ProductsListService) {
     this.productsListService.getListProduct(20);
-    this.products = this.productsListService.getLatestTwentyItems();
+    this.products = this.productsListService.getLatestCountItems();
   }
 }
