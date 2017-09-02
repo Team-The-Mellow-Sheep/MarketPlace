@@ -1,4 +1,4 @@
-import { Home } from './models/home';
+// import { Home } from './models/home';
 
 import { HomeService } from './services/home.service';
 import { Component } from '@angular/core';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomeComponent {
 
-  homePhones: Observable<Home[]>;
+  homePhones: Observable<any[]>;
   constructor(private homeService: HomeService) {
     this.homePhones = this.homeService.getLatestThreeItems();
   }

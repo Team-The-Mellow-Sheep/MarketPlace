@@ -1,3 +1,4 @@
+import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -8,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'users', loadChildren: './users/users.module#UsersModule' },
+  { path: 'product/:productId', component: ProductComponent }, // loadChildren: './product/product.module#ProductModule' },
   { path: '**', component: NotFoundComponent }
 ];
 
