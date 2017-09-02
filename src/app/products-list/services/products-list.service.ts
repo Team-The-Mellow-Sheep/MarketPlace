@@ -20,7 +20,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
   get entityPath(): string {
     return `/smartphones`;
   }
-  getLatestTwentyItems(): Observable<any[]> {
+  getLatestCountItems(): Observable<any[]> {
     return this.listProduct.map((item) => {
       const items = [];
 
