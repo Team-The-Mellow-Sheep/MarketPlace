@@ -1,0 +1,24 @@
+.img{
+  margin:auto;
+}
+.card-body{
+  background-color: #edeff1;
+}
+
+.btn{
+  width:32%;
+  margin-bottom:1rem; 
+}
+h4{
+  color:grey;
+}
+.card{
+  height: 105%;
+  background-color: #edeff1;
+/*   border: none !important; */
+}
+.imgColor{
+  border: none !important;  
+  background-color:rgba(237, 239, 241, 0.00);
+  height: 50%;
+}
