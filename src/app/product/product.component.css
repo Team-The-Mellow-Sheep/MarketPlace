@@ -1,0 +1,26 @@
+.imgColor {
+  background-color: rgba(237, 239, 241, 0.50);
+}
+.img{
+  margin:auto;
+}
+.reviews{
+  margin-bottom:2rem;
+  text-align: center;
+}
+.card-body{
+  background-color: #edeff1;
+}
+
+.btn{
+  width:50%;
+  margin-bottom:1rem; 
+}
+.btn-buy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h4{
+  color:grey;
+}
