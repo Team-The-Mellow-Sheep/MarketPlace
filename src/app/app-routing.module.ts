@@ -9,9 +9,9 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'products-list', loadChildren: './products-list/products-list.module#ProductsListModule' }, // component: ProductsListComponent },
+  { path: 'product', loadChildren: './product/product.module#ProductModule' },
   { path: 'users', loadChildren: './users/users.module#UsersModule' },
-  { path: 'product/:productId', component: ProductComponent }, // loadChildren: './product/product.module#ProductModule' },
-  { path: 'products-list', component: ProductsListComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

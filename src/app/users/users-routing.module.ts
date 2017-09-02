@@ -1,4 +1,3 @@
-import { NotFoundComponent } from './../not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -21,7 +20,6 @@ const usersRoutes: Routes = [
     path: 'shopCart',
     component: ShoppingCartComponent,
   },
-  // { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
