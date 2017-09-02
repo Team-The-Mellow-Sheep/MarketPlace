@@ -1,3 +1,5 @@
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthService } from './../shared/services/auth.service';
 import { ProductService } from './services/product.service';
 
 
@@ -15,7 +17,15 @@ export class ProductComponent implements OnInit {
 
   product: Observable<any[]>;
   productId: string;
-  constructor(private prductService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  isAuthenticated: boolean;
+  constructor(
+    private prductService: ProductService,
+    private router: Router, private route: ActivatedRoute,
+    private authService: AuthService) {
+    authService.authState.subscribe((state: AngularFireAuthModule) => {
+      this.isAuthenticated = state !== null;
+    });
+  }
   ngOnInit() {
     this.product =
       this.route.params
