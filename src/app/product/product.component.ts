@@ -1,3 +1,4 @@
+import { ProductService } from './services/product.service';
 
 
 import { Component, OnInit } from '@angular/core';
@@ -14,8 +15,13 @@ export class ProductComponent implements OnInit {
 
   product: Observable<any[]>;
   productId: string;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private prductService: ProductService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
-
+    this.product =
+      this.route.params
+        .switchMap((params: Params) => {
+          this.productId = params['productId'];
+          return this.prductService.getProduct(this.productId);
+        });
   }
 }
