@@ -1,6 +1,8 @@
-import { HomeService } from './services/home.service';
+import { ProductsListService } from './../products-list/services/products-list.service';
+
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomeComponent {
 
-  homePhones: Observable<any[]>;
-  constructor(private homeService: HomeService) {
-    this.homePhones = this.homeService.getLatestThreeItems();
+  products: Observable<any[]>;
+  constructor(private productsListService: ProductsListService) {
+    this.productsListService.getListProduct(8);
+    this.products = this.productsListService.getLatestTwentyItems();
   }
 }

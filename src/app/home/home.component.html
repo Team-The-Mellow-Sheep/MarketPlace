@@ -43,17 +43,17 @@
   <!-- /.row -->
   <hr />
   <div class="row">
-    <div *ngFor="let homePhone of homePhones | async" class="col-sm-3 my-3">
+    <div *ngFor="let product of products | async" class="col-sm-3 my-3">
       <div class="card">
         <div class="imgColor">
-          <img class="card-img-top" src="{{homePhone.image}}" alt="">
+          <img class="card-img-top" src="{{product.image}}" alt="">
         </div>
         <div class="card-body">
-          <h4 class="card-title">{{homePhone.title}}</h4>
-          <p class="card-text">{{homePhone.display}}</p>
+          <h4 class="card-title">{{product.title}}</h4>
+          <p class="card-text">{{product.display}}</p>
         </div>
         <div class="card-footer">
-          <a [routerLink]="['/product/', homePhone.id]" class="btn btn-primary">More for this product</a>
+          <a [routerLink]="['/product/', product.id]" class="btn btn-primary">More for this product</a>
         </div>
       </div>
     </div>
