@@ -1,8 +1,7 @@
-// import { Home } from './../models';
 import { Injectable, Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-// import { AngularFireModule } from 'angularFire2';
+
 import {
   FirebaseListObservable,
   FirebaseObjectObservable,
