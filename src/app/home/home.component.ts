@@ -15,5 +15,6 @@ export class HomeComponent {
   constructor(private productsListService: ProductsListService) {
     this.productsListService.getListProduct(8);
     this.products = this.productsListService.getLatestCountItems();
+    //  this.productsListService.onWindowScroll(8);
   }
 }
