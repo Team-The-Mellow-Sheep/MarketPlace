@@ -31,3 +31,9 @@ h4, .card-text{
 .imgColor{
  margin: auto;
 }
+.btn{
+  cursor: pointer;
+}
+.text-center{
+  margin-bottom: 2rem;
+}

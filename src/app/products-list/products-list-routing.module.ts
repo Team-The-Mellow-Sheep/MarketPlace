@@ -5,10 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const productsListRoutes: Routes = [
   {
-    path: '', redirectTo: 'products-list', pathMatch: 'full'
-  },
-  {
-    path: 'products-list', component: ProductsListComponent
+    path: '', component: ProductsListComponent
   },
 ];
 

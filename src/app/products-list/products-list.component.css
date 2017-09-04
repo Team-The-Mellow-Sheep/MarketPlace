@@ -8,6 +8,7 @@
 .btn{
   width:32%;
   margin-bottom:1rem; 
+  cursor: pointer;
 }
 h4{
   color:grey;
@@ -15,7 +16,6 @@ h4{
 .card{
   height: 105%;
   background-color: #edeff1;
-/*   border: none !important; */
 }
 .imgColor{
   border: none !important;  

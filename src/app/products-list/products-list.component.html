@@ -1,25 +1,31 @@
-<div *ngFor="let product of products | async">
+<div *ngFor="let smartPhone of smartPhones | async">
   <div class="row">
     <div class="col-md-4 col-md-offset-5">
       <div class="card mt-4 imgColor">
         <div class="img">
-          <img class="card-img-top img-fluid" src="{{product.image}}" alt="">
+          <img class="card-img-top img-fluid" src="{{smartPhone.image}}" alt="">
         </div>
       </div>
     </div>
     <div class="col-md-8 col-md-offset-5">
       <div class="card mt-4">
         <div class="card-body">
-          <h3 class="card-title">{{product.title}}</h3>
+          <h3 class="card-title">{{smartPhone.title}}</h3>
           <h5>Price: 244.99$</h5>
           <h4>Display</h4>
           <p class="card-text">
-            {{product.display}}</p>
+            {{smartPhone.display}}</p>
           <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
         </div>
       </div>
     </div>
   </div>
-  <a [routerLink]="['/product/', product.id]" class="btn btn-success">View more</a>
+  <a [routerLink]="['/product/', smartPhone.id]" class="btn btn-success">View more</a>
   <hr />
 </div>
+<p class="text-center">
+  <button (click)="onScroll()" class="btn">View more products...
+    </button>
+</p>
+
+<div class="notification is-warning" *ngIf="finished">End... Taht`s all!!!</div>
