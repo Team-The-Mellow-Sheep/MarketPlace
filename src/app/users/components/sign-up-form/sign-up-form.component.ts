@@ -1,3 +1,4 @@
+import { UserRoutersService } from './../../../shared/services/user-routers.service';
 import { AuthService } from './../../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -19,7 +20,18 @@ import { Router } from '@angular/router';
 export class SignUpFormComponent implements OnInit {
   signUpForm: FormGroup;
   authError: string;
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
+  returnUrl: string;
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private userRoutersService: UserRoutersService,
+  ) {
+    this.returnUrl = this.userRoutersService.urls[this.userRoutersService.urls.length - 1] || '/';
+    if (this.returnUrl === '/users/sign-in') {
+      this.returnUrl = this.userRoutersService.urls[this.userRoutersService.urls.length - 2] || '/';
+    }
+  }
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
       username: ['', [Validators.required]],
@@ -35,7 +47,7 @@ export class SignUpFormComponent implements OnInit {
         if (error) {
           this.authError = error.message;
         } else {
-          this.router.navigate(['/']);
+          this.router.navigateByUrl(this.returnUrl);
         }
       });
   }

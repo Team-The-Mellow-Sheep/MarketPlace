@@ -1,13 +1,14 @@
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { UserRoutersService } from './shared/services/user-routers.service';
 import { AuthService } from './shared/services';
 
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AuthService]
+  providers: [AuthService, UserRoutersService]
 })
 export class AppComponent {
   private isAuthenticated: boolean;
