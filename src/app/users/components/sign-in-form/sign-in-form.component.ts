@@ -1,4 +1,7 @@
+import { UserRoutersService } from './../../../shared/services/user-routers.service';
+// import { AuthGuard } from './../../../shared/guards/authGuard';
 import { AuthService } from './../../../shared/services/auth.service';
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -7,7 +10,8 @@ import {
   Validators
 } from '@angular/forms';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-in-form',
@@ -18,7 +22,16 @@ import { Router } from '@angular/router';
 export class SignInFormComponent implements OnInit {
   signInForm: FormGroup;
   authError: string;
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) { }
+  returnUrl: string;
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private userRoutersService: UserRoutersService,
+  ) {
+    this.returnUrl = this.userRoutersService.urls[this.userRoutersService.urls.length - 1] || '/';
+  }
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required]],
@@ -32,7 +45,7 @@ export class SignInFormComponent implements OnInit {
         if (error) {
           this.authError = error.message;
         } else {
-          this.router.navigate(['/']);
+          this.router.navigateByUrl(this.returnUrl);
         }
       });
   }

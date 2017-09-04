@@ -9,12 +9,14 @@ import {
 } from './components';
 
 import { UsersRoutingModule } from './users-routing.module';
+// import { AuthGuard } from '../shared/guards/authGuard';
 
 @NgModule({
   imports: [
     UsersRoutingModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //  AuthGuard
   ],
   declarations: [
     SignInFormComponent,
