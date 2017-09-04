@@ -25,14 +25,14 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     super(db, authService);
 
   }
-  getListProduct(numberProduct): {} {
-    return this.listProduct =
-      this.getList({ query: { limitToFirst: numberProduct } });
-  }
+  /*   getListProduct(numberProduct) {
+      return this.listProduct =
+        this.getList({ query: { limitToFirst: numberProduct } });
+    } */
   get entityPath(): string {
     return `/smartphones`;
   }
-  getLatestCountItems(): Observable<any[]> {
+  /* getLatestCountItems(): Observable<any[]> {
     return this.listProduct.map((item) => {
       const items = [];
 
@@ -45,7 +45,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
 
       return items;
     });
-  }
+  } */
 
   getPhonesWhenScroll(batch, lastKey?) {
     const query = {

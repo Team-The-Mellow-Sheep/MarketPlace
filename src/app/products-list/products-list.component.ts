@@ -19,6 +19,7 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private productsListService: ProductsListService,
   ) {
+    this.smartPhones = this.productsListService.getSmarthphones();
   }
   @HostListener('window:scroll', [])
   onWindowScroll(numberProduct) {
@@ -28,11 +29,13 @@ export class ProductsListComponent implements OnInit {
     }
   }
   ngOnInit() {
-    window.scrollTo(50, 50);
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    // window.scrollTo(0, 0);
   }
 
   onScroll() {
-    console.log('scrolled');
     this.smartPhones = this.productsListService.getSmarthphones();
   }
 

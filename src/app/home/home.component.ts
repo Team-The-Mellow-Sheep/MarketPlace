@@ -2,6 +2,7 @@ import { ProductsListService } from './../products-list/services/products-list.s
 
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
 @Component({
@@ -11,10 +12,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomeComponent {
 
-  products: Observable<any[]>;
+  products = new BehaviorSubject([]);
   constructor(private productsListService: ProductsListService) {
-    this.productsListService.getListProduct(8);
-    this.products = this.productsListService.getLatestCountItems();
-    //  this.productsListService.onWindowScroll(8);
+    // this.productsListService.getListProduct(4);
+    // this.products = this.productsListService.getLatestCountItems();
+    this.products = this.productsListService.getSmarthphones();
+  }
+  onScroll() {
+    this.products = this.productsListService.getSmarthphones();
   }
 }
