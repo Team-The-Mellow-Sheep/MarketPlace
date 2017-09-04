@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { NgModule } from '@angular/core';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    // InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

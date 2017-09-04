@@ -15,7 +15,6 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
   }
 
   getList(options?: Object) {
-    console.log(options)
     return this.db.list(`${this.entityPath}`, options);
   }
   create(entity: T) {
@@ -24,18 +23,6 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
   delete(entity: T) {
     return this.list.remove(entity.$key);
   }
-  /* getPhonesWhenScroll(batch, lastKey?) {
-    const query = {
-      orderByKey: true,
-      limitToFirst: batch,
-    };
-    if (lastKey) {
-      query['start'] = lastKey;
-      return this.db.list('/smartphones', {
-        query
-      });
-    }
-  } */
 }
 export interface IEntity {
   $key?: string;

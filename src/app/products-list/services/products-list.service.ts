@@ -1,17 +1,15 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AbstractFirebaseService } from '../../shared/services';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AuthService } from './../../shared/services/auth.service';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable, Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
-/* import { HostListener } from '@angular/core'; */
-// import { Inject } from '@angular/core';
-// import { DOCUMENT } from '@angular/platform-browser';
 
-import { AbstractFirebaseService } from '../../shared/services';
 
 @Injectable()
 export class ProductsListService extends AbstractFirebaseService<any> {
@@ -23,7 +21,6 @@ export class ProductsListService extends AbstractFirebaseService<any> {
   constructor(
     protected db: AngularFireDatabase,
     protected authService: AuthService,
-    // @Inject(DOCUMENT) private document: Document
   ) {
     super(db, authService);
 
@@ -49,12 +46,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
       return items;
     });
   }
-  /*   @HostListener('window:scroll', [])
-    onWindowScroll(numberProduct) {
-      console.log('asd')
-      return this.listProduct =
-        this.getList({ query: { limitToFirst: numberProduct } });
-    } */
+
   getPhonesWhenScroll(batch, lastKey?) {
     const query = {
       orderByKey: true,
@@ -71,16 +63,11 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     }
     this.getPhonesWhenScroll(this.batch + 1, this.lastKey)
       .do(phones => {
-        console.log('phones ', phones, this.batch)
-
         this.lastKey = _.last(phones)['$key'];
-        console.log(_.last(phones.$key)) /* ['$key']) */
 
         const newPhones = _.slice(phones, 0, this.batch);
-        console.log('newPhones ', newPhones)
 
         const currentPhones = this.smartPhones.getValue();
-        console.log('current ', currentPhones)
 
         if (this.lastKey === _.last(newPhones)['$key']) {
           this.finished = true;

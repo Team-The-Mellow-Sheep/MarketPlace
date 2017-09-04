@@ -4,9 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const productsListRoutes: Routes = [
-  /*  {
-     path: '', redirectTo: 'products-list', pathMatch: 'full'
-   }, */
   {
     path: '', component: ProductsListComponent
   },
