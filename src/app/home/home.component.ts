@@ -1,6 +1,6 @@
 import { ProductsListService } from './../products-list/services/products-list.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -16,7 +16,14 @@ export class HomeComponent implements OnInit {
   constructor(private productsListService: ProductsListService) {
     // this.productsListService.getListProduct(4);
     // this.products = this.productsListService.getLatestCountItems();
-    this.products = this.productsListService.getSmarthphones();
+    // this.products = this.productsListService.getSmarthphones();
+  }
+  @HostListener('window:scroll', [])
+  onWindowScroll(numberProduct) {
+
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      this.products = this.productsListService.getSmarthphones();
+    }
   }
   ngOnInit() {
     if ('scrollRestoration' in history) {

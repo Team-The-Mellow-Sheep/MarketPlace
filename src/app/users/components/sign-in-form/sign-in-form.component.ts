@@ -1,5 +1,4 @@
 import { UserRoutersService } from './../../../shared/services/user-routers.service';
-// import { AuthGuard } from './../../../shared/guards/authGuard';
 import { AuthService } from './../../../shared/services/auth.service';
 
 import { Component, OnInit } from '@angular/core';
