@@ -19,7 +19,7 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private productsListService: ProductsListService,
   ) {
-    this.smartPhones = this.productsListService.getSmarthphones();
+    // this.smartPhones = this.productsListService.getSmarthphones();
   }
   @HostListener('window:scroll', [])
   onWindowScroll(numberProduct) {
