@@ -17,10 +17,12 @@ export class ProductComponent implements OnInit {
   product: Observable<any[]>;
   productId: string;
   isAuthenticated: boolean;
+  userId: string;
   constructor(
     private prductService: ProductService,
     private router: Router, private route: ActivatedRoute,
-    private authService: AuthService) {
+    private authService: AuthService
+  ) {
     authService.authState.subscribe((state: AngularFireAuthModule) => {
       this.isAuthenticated = state !== null;
     });
@@ -32,5 +34,13 @@ export class ProductComponent implements OnInit {
           this.productId = params['productId'];
           return this.prductService.getProduct(this.productId);
         });
+  }
+  byProduct(event) {
+    // this.authService.authState.subscribe(id => this.userId = id.uid);
+    // this.product.subscribe(product =>
+    //   this.prductService.update(product[0], { 'userIds': { 'iserId': this.userId } })
+    //   // this.prductService.update(product, { userId: 'ss' })
+
+    //  );
   }
 }
