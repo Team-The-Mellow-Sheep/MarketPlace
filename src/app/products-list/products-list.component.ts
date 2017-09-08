@@ -12,6 +12,7 @@ import { AbstractFirebaseService } from '../shared/services/abstract-firebase.se
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
 })
+
 export class ProductsListComponent implements OnInit {
 
   smartPhones = new BehaviorSubject([]);
@@ -19,7 +20,7 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private productsListService: ProductsListService,
   ) {
-    // this.smartPhones = this.productsListService.getSmarthphones();
+     //this.smartPhones = this.productsListService.getSmarthphones();
   }
   @HostListener('window:scroll', [])
   onWindowScroll(numberProduct) {
@@ -33,10 +34,11 @@ export class ProductsListComponent implements OnInit {
       history.scrollRestoration = 'manual';
     }
     // window.scrollTo(0, 0);
+    this.smartPhones = this.productsListService.getSmarthphones();
+    
   }
 
   onScroll() {
     this.smartPhones = this.productsListService.getSmarthphones();
   }
-
 }

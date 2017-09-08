@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 
 import {
   SignInFormComponent,
@@ -20,6 +21,10 @@ const usersRoutes: Routes = [
     path: 'shopCart',
     component: ShoppingCartComponent,
   },
+  {
+    path: 'admin',
+    component: AdminComponent,
+  }
 ];
 
 @NgModule({

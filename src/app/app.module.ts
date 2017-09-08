@@ -9,11 +9,13 @@ import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// import { FilterPipe } from './filter/filter.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    // FilterPipe,
   ],
   imports: [
     BrowserModule,

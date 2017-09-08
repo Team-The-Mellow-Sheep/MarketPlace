@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
       history.scrollRestoration = 'manual';
     }
     // window.scrollTo(0, 0);
+    
   }
   onScroll() {
     this.products = this.productsListService.getSmarthphones();

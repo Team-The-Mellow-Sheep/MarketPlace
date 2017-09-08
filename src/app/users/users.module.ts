@@ -9,6 +9,7 @@ import {
 } from './components';
 
 import { UsersRoutingModule } from './users-routing.module';
+import { AdminComponent } from './components/admin/admin.component';
 // import { AuthGuard } from '../shared/guards/authGuard';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UsersRoutingModule } from './users-routing.module';
   declarations: [
     SignInFormComponent,
     SignUpFormComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AdminComponent
   ],
   providers: [],
 })

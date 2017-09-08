@@ -1,4 +1,6 @@
-<div *ngFor="let smartPhone of smartPhones | async">
+<p>search by name</p>
+<input name="filterargs" [(ngModel)]="filterargs">
+<div *ngFor="let smartPhone of smartPhones | filter:filterargs | async">
   <div class="row">
     <div class="col-md-4 col-md-offset-5">
       <div class="card mt-4 imgColor">
@@ -23,9 +25,9 @@
   <a [routerLink]="['/product/', smartPhone.id]" class="btn btn-success">View more</a>
   <hr />
 </div>
-<p class="text-center">
+<!-- <p class="text-center">
   <button (click)="onScroll()" class="btn">View more products...
     </button>
-</p>
+</p> -->
 
-<div class="notification is-warning" *ngIf="finished">End... Taht`s all!!!</div>
+<div class="notification is-warning" *ngIf="finished">End... That`s all!!!</div>
