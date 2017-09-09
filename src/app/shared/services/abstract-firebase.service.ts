@@ -2,6 +2,7 @@ import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { IEntity } from '../../shared/models/IEntity';
 
 @Injectable()
 export abstract class AbstractFirebaseService<T extends IEntity> {
@@ -24,6 +25,4 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
     return this.list.remove(entity.$key);
   }
 }
-export interface IEntity {
-  $key?: string;
-}
+

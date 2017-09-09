@@ -7,25 +7,30 @@ import {
   FormBuilder,
   Validators
 } from '@angular/forms';
+import { UserService } from '../../../shared/services/user.service';
 
 import { Router } from '@angular/router';
+import { User } from '../../../shared/models/user-model';
 
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
   styleUrls: ['../user.component.css'],
-  providers: [AuthService]
+  providers: [AuthService, UserService]
 })
 
 export class SignUpFormComponent implements OnInit {
   signUpForm: FormGroup;
   authError: string;
   returnUrl: string;
+  user: User;
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private userRoutersService: UserRoutersService,
+    private userService: UserService,
   ) {
     this.returnUrl = this.userRoutersService.urls[this.userRoutersService.urls.length - 1] || '/';
     if (this.returnUrl === '/users/sign-in') {
@@ -35,8 +40,10 @@ export class SignUpFormComponent implements OnInit {
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
       username: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      address: [''],
     });
   }
 
@@ -49,6 +56,25 @@ export class SignUpFormComponent implements OnInit {
         } else {
           this.router.navigateByUrl(this.returnUrl);
         }
+      })
+      .then(() => {
+        console.log('***');
+        console.log(localStorage.getItem('loggedUserId'));
+        this.user = new User(
+          localStorage.getItem('loggedUserId'),
+          formControls['username'].value,
+          formControls['name'].value,
+          formControls['email'].value,
+          formControls['address'].value
+        );
+        this.userService.create(this.user)
+          .then((error) => {
+            if (error) {
+              this.authError = error.message;
+            } else {
+              this.router.navigateByUrl(this.returnUrl);
+            }
+          });
       });
   }
 }
