@@ -24,5 +24,8 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
   delete(entity: T) {
     return this.list.remove(entity.$key);
   }
+  create(entity: T) {
+    return this.list.push(entity);
+  }
 }
 
