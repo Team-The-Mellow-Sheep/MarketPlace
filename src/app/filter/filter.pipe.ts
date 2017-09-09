@@ -11,7 +11,11 @@ export class FilterPipe implements PipeTransform {
     // filter items array, items which match and return true will be kept, false will be filtered out
     // return smartPhones.filter(smartPhone => smartPhone.title.indexOf(filterargs) !== -1);
     // return items.filter(item => item.title.indexOf(filterargs)!==1);
-    console.log(items);
+    
+    items.forEach(function(element){
+      console.log(element[0]);
+    })
+
     if (items == undefined) {
       return "No results";
     }
