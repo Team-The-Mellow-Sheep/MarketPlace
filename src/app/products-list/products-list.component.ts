@@ -20,6 +20,8 @@ export class ProductsListComponent implements OnInit {
     private productsListService: ProductsListService,
   ) {
     // this.smartPhones = this.productsListService.getSmarthphones();
+    const asd = this.productsListService.getListProductByCamera('', '12 MP');
+    // console.log(asd)
   }
   @HostListener('window:scroll', [])
   onWindowScroll(numberProduct) {

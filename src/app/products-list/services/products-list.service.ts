@@ -25,14 +25,30 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     super(db, authService);
 
   }
-  /*   getListProduct(numberProduct) {
-      return this.listProduct =
-        this.getList({ query: { limitToFirst: numberProduct } });
-    } */
+  getListProductByCamera(prop, mp) {
+    // cameraMP=
+    if (prop === '') {
+      return;
+    }
+    this.listProduct =
+      this.getList({
+        query: {
+          orderByChild: prop, // equalTo: '12 MP' } })
+          startAt: mp,
+          endAt: mp + 'uf8ff',
+        }
+      });
+    //  .once("value")
+    // console.log(this.listProduct)-tova dava subscribe
+    //  const filtered = this.listProduct.map((item) => item.filter(it => it.title === 'Samsung Galaxy S8 Active'));
+    this.listProduct.subscribe(x => console.log(x))
+    //  filtered.subscribe(x => console.log(x))
+    //  return this.getLatestCountItems();
+  } // towa go otkomentirah
   get entityPath(): string {
     return `/smartphones`;
   }
-  /* getLatestCountItems(): Observable<any[]> {
+  getLatestCountItems(): Observable<any[]> {
     return this.listProduct.map((item) => {
       const items = [];
 
@@ -45,7 +61,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
 
       return items;
     });
-  } */
+  }
 
   getPhonesWhenScroll(batch, lastKey?) {
     const query = {
@@ -74,6 +90,22 @@ export class ProductsListService extends AbstractFirebaseService<any> {
         }
         this.smartPhones.next(_.concat(currentPhones, newPhones));
       }).take(1).subscribe();
+    //  this.smartPhones.subscribe(c => console.log(c))
     return this.smartPhones;
+  }
+  getPhonesCamera(numMP) {
+    /* return this.listProduct.map((item) => {
+      const items = [];
+
+      item.forEach((product) => {
+        this.get(product.$key)
+          .subscribe((phone) => {
+            items.push(phone);
+          });
+      });
+      console.log(items)
+      return items;
+    });
+ */
   }
 }
