@@ -8,9 +8,6 @@ import { AbstractFirebaseService } from '../../../shared/services/abstract-fireb
 // import { IEntity } from '../../../shared/services/index';
 // import { User } from '../../../shared/models/user-model';
 
-
-// let db = AppModule;
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -30,19 +27,16 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    // for (let index = 0; index < 200; index++) {
-      this.smartPhones = this.productsListService.getSmarthphonesAdmin();
-    // }
-
+    this.smartPhones = this.productsListService.getSmarthphonesAdmin();
     this.listOfUsers = this.UserService.getList();
   }
 
-  onScroll() {
-    this.smartPhones = this.productsListService.getPhones();
-  }
+  // onScroll() {
+  //   this.smartPhones = this.productsListService.getPhones();
+  // }
 
-  onWindowScroll(numberProduct) {
-    this.smartPhones = this.productsListService.getPhones();
-  }
+  // onWindowScroll(numberProduct) {
+  //   this.smartPhones = this.productsListService.getPhones();
+  // }
 
 }
