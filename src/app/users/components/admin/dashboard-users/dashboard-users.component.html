@@ -11,7 +11,9 @@
           <div class="well">
             <h4>{{user.name}}</h4>
             <p>{{user.username}}</p>
-            <input type="checkbox" id="is-admin" ngControl="admin">
+            <!-- <input type="checkbox" id="is-admin" ngControl="admin"> -->
+            <!-- <input type="checkbox" md-no-ink ng-model="user.isAdmin" /> IsAdmin: {{user.isAdmin}}<br/> -->
+            <input id="is-admin" type="checkbox" name="{{user.userId}}" [checked]="bool" (change)="onChange($event.target)">
             <label for="is-admin">Admin?</label>
           </div>
           <!-- </a> -->

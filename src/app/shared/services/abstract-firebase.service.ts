@@ -18,14 +18,20 @@ export abstract class AbstractFirebaseService<T extends IEntity>{
   getList(options?: Object) {
     return this.db.list(`${this.entityPath}`, options);
   }
+
   update(entity: T, changes: Object) {
     return this.list.update(entity.$key, changes);
   }
+
   delete(entity: T) {
     return this.list.remove(entity.$key);
   }
   create(entity: T) {
     return this.list.push(entity);
+  }
+
+  updateById(id: string, entity: T) {
+    this.list.update(this.entityPath + '/' + id, entity) ;
   }
 }
 
