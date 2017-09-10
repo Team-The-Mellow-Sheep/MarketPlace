@@ -16,8 +16,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 export class ProductsListComponent implements OnInit {
 
-  smartPhones; // = new BehaviorSubject([]);
-  finished = false;
+  private smartPhones; // = new BehaviorSubject([]);
+  private finished = false;
   private filters = [];
   private filterCategori = '';
   private filterProp = '';
@@ -32,7 +32,7 @@ export class ProductsListComponent implements OnInit {
   private onChange(element) {
 
     if (!element.checked) {
-      console.log('ssss ', element.value)
+
       let filter = element.value;
       filter = filter.split('/');
       for (let i = 0; i < this.filters.length; i += 1) {
@@ -53,12 +53,11 @@ export class ProductsListComponent implements OnInit {
 
       if (this.filterCategori !== '') {
 
-        this.filters.push({ prop: this.filterCategori, value: this.filterProp })
+        this.filters.push({ prop: this.filterCategori, value: this.filterProp });
       }
     }
   }
   filter() {
-    console.log('filter', this.filters)
     this.smartPhones = this.productsListService.getPhonesFilter(this.filters);
   }
 
@@ -85,4 +84,3 @@ export class ProductsListComponent implements OnInit {
   }
 
 }
-// raboti kato skrolna do dolu i ima nqkakuv fikter togava apendva nanowo kakto trqbwa
