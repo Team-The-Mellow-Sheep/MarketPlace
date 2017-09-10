@@ -1,10 +1,11 @@
 import { ProductsListService } from './services/products-list.service';
+import { AbstractFirebaseService } from '../shared/services/abstract-firebase.service';
 
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Params, ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { AbstractFirebaseService } from '../shared/services/abstract-firebase.service';
+
 
 
 @Component({
@@ -14,20 +15,33 @@ import { AbstractFirebaseService } from '../shared/services/abstract-firebase.se
 })
 export class ProductsListComponent implements OnInit {
 
-  smartPhones = new BehaviorSubject([]);
+  smartPhones; // = new BehaviorSubject([]);
+  finished = false;
+  private filterCategori = '';
+  private filterProp = '';
 
   constructor(
     private productsListService: ProductsListService,
   ) {
-    // this.smartPhones = this.productsListService.getSmarthphones();
-    const asd = this.productsListService.getListProductByCamera('', '12 MP');
-    // console.log(asd)
+
   }
+  private onChange(element) {
+    let filter = element.value;
+    filter = filter.split('/');
+
+    this.filterCategori = filter[0];
+    this.filterProp = filter[1];
+  }
+  filter() {
+    this.smartPhones = this.productsListService.getPhonesFilter(this.filterCategori, this.filterProp);
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll(numberProduct) {
 
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      this.smartPhones = this.productsListService.getSmarthphones();
+      this.smartPhones = this.productsListService.getSmarthphones(this.filterCategori, this.filterProp);
+      this.finished = this.productsListService.isFInishedScroll();
     }
   }
   ngOnInit() {
@@ -38,7 +52,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   onScroll() {
-    this.smartPhones = this.productsListService.getSmarthphones();
+    this.smartPhones = this.productsListService.getSmarthphones(this.filterCategori, this.filterProp);
   }
 
 }

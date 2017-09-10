@@ -1,41 +1,45 @@
 <aside id="filter" class="col-lg-3 col-md-3 col-sm-4 col-xs-11 shadow">
-  <input id="show-all-products" type="checkbox" checked="checked" name="" value="">
-  <label for="show-all-products">Show all</label>
+  <form>
+    <input id="show-all-products" type="checkbox" checked="checked" name="show all" value="''/''" (change)="onChange($event.target)">
+    <label for="show-all-products">Show all</label>
 
-  <h4>Filter by Display</h4>
-  <div class="sub-filter">
-    <div>
-      <input id="filter-display-4.5" type="checkbox" name="dogAgeSpecific" value="4.5">
-      <label for="filter-age-4.5">4.5` </label>
-      <input id="filter-display-5" type="checkbox" name="dogAgeSpecific" value="5">
-      <label for="filter-age-4.5">5` </label>
-      <input id="filter-display-5.5" type="checkbox" name="dogAgeSpecific" value="5.5">
-      <label for="filter-age-5.5">5.5` </label>
+    <h4>Filter by Display</h4>
+    <div class="sub-filter">
+      <div>
+        <input id="filter-display-4.5" type="checkbox" name="filter-display-4.5" value="display/Type4.5" (change)="onChange($event.target)">
+        <label for="filter-display-4.5">4.5` </label>
+        <input id="filter-display-5" type="checkbox" name="filter-display-5" value="display/Type5" (change)="onChange($event.target)">
+        <label for="filter-display-5">5` </label>
+        <input id="filter-display-5.5" type="checkbox" name="filter-display-5.5" value="display/Type5.5" (change)="onChange($event.target)">
+        <label for="filter-display-5.5">5.5` </label>
+      </div>
     </div>
-  </div>
-  <h4>Filter by Cmera</h4>
-  <div class="sub-filter">
-    <div>
-      <input id="filter-camera-5-MP" type="checkbox" name="amountInKg" value="5 MP">
-      <label for="filter--camera-5-MP">5 MP </label>
-      <input id="filter-camera-8-MP" type="checkbox" name="amountInKg" value="8 MP">
-      <label for="filter--camera-8-MP">8 MP </label>
-      <input id="filter-camera-13-MP" type="checkbox" name="amountInKg" value="13 MP">
-      <label for="filter--camera-13-MP">13 MP </label>
+    <h4>Filter by Cmera</h4>
+    <div class="sub-filter">
+      <div>
+        <input id="filter-camera-5-MP" type="checkbox" name="filter-camera-5-MP" value="camera/5 MP" (change)="onChange($event.target)">
+        <label for="filter--camera-5-MP">5 MP </label>
+        <input id="filter-camera-8-MP" type="checkbox" name="filter-camera-8-M" value="camera/8 MP" (change)="onChange($event.target)">
+        <label for="filter--camera-8-MP">8 MP </label>
+        <input id="filter-camera-13-MP" type="checkbox" name="filter-camera-13-MP" value="camera/13 MP" (change)="onChange($event.target)">
+        <label for="filter--camera-13-MP">13 MP </label>
+      </div>
     </div>
-  </div>
-  <h4>Filter by CPU</h4>
-  <div class="sub-filter">
-    <div>
-      <input id="filter-cpu-Quad-core 1.2" type="checkbox" name="dogSizeSpecific" value="Quad-core 1.2">
-      <label for="filter-cpu-Quad-core 1.2">Quad 1.2 </label>
-      <input id="filter-cpu-Quad-core 1.4" type="checkbox" name="dogSizeSpecific" value="Quad-core 1.4">
-      <label for="filter-cpu-Quad-core 1.4">Quad 1.4 </label>
-      <input id="filter-cpu-Octa-core 2.4" type="checkbox" name="dogSizeSpecific" value="Octa-core 2.4">
-      <label for="filter-cpu-Octa-core 2.4">Octa 2.4 </label>
+    <h4>Filter by CPU</h4>
+    <div class="sub-filter">
+      <div>
+
+        <label> 
+        <input type="checkbox" value="cpu/Quad-core 1.2" (change)="onChange($event.target)">Quad 1.2 
+      </label>
+        <input id="filter-cpu-Quad-core 1.4" type="checkbox" name="filter-cpu-Quad-core 1.2" value="cpu/Quad-core 1.4" (change)="onChange($event.target)">
+        <label for="filter-cpu-Quad-core 1.4">Quad 1.4 </label>
+        <input id="filter-cpu-Octa-core 2.4" type="checkbox" name="filter-cpu-Octa-core 2.4" value="cpu/Octa-core 2.4" (change)="onChange($event.target)">
+        <label for="filter-cpu-Octa-core 2.4">Octa 2.4 </label>
+      </div>
     </div>
-  </div>
-  <button id="filter-dog-food-button" class="btn btn-primary btn-lg" type="button">Filter</button>
+    <button (click)="filter()" id="filter-dog-food-button" class="btn btn-primary btn-lg" type="button">Filter</button>
+  </form>
 </aside>
 
 
@@ -64,9 +68,8 @@
   <a [routerLink]="['/product/', smartPhone.id]" class="btn btn-success">View more</a>
   <hr />
 </div>
-<p class="text-center">
+<div class="notification is-warning" *ngIf="finished" style="text-align:center">End... Taht`s all!!!</div>
+<p *ngIf="!finished" class="text-center">
   <button (click)="onScroll()" class="btn">View more products...
     </button>
 </p>
-
-<div class="notification is-warning" *ngIf="finished">End... Taht`s all!!!</div>

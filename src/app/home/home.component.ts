@@ -1,7 +1,6 @@
 import { ProductsListService } from './../products-list/services/products-list.service';
 
 import { Component, OnInit, HostListener } from '@angular/core';
-// import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
@@ -13,16 +12,14 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class HomeComponent implements OnInit {
 
   products = new BehaviorSubject([]);
+  withoutFilter = '';
   constructor(private productsListService: ProductsListService) {
-    // this.productsListService.getListProduct(4);
-    // this.products = this.productsListService.getLatestCountItems();
-    // this.products = this.productsListService.getSmarthphones();
   }
   @HostListener('window:scroll', [])
   onWindowScroll(numberProduct) {
 
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      this.products = this.productsListService.getSmarthphones();
+      this.products = this.productsListService.getSmarthphones(this.withoutFilter, this.withoutFilter);
     }
   }
   ngOnInit() {
@@ -32,6 +29,6 @@ export class HomeComponent implements OnInit {
     // window.scrollTo(0, 0);
   }
   onScroll() {
-    this.products = this.productsListService.getSmarthphones();
+    this.products = this.productsListService.getSmarthphones(this.withoutFilter, this.withoutFilter);
   }
 }

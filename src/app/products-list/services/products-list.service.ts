@@ -17,38 +17,80 @@ export class ProductsListService extends AbstractFirebaseService<any> {
   batch = 4;
   lastKey = '';
   finished = false;
+  private smarthPhonesFilter: FirebaseListObservable<any[]>;
   private listProduct: FirebaseListObservable<any[]>;
   constructor(
     protected db: AngularFireDatabase,
     protected authService: AuthService,
   ) {
     super(db, authService);
-
   }
-  getListProductByCamera(prop, mp) {
-    // cameraMP=
-    if (prop === '') {
-      return;
-    }
-    this.listProduct =
-      this.getList({
-        query: {
-          orderByChild: prop, // equalTo: '12 MP' } })
-          startAt: mp,
-          endAt: mp + 'uf8ff',
-        }
-      });
-    //  .once("value")
-    // console.log(this.listProduct)-tova dava subscribe
-    //  const filtered = this.listProduct.map((item) => item.filter(it => it.title === 'Samsung Galaxy S8 Active'));
-    this.listProduct.subscribe(x => console.log(x))
-    //  filtered.subscribe(x => console.log(x))
-    //  return this.getLatestCountItems();
-  } // towa go otkomentirah
+
   get entityPath(): string {
     return `/smartphones`;
   }
-  getLatestCountItems(): Observable<any[]> {
+  getPhonesWhenScroll(batch, prop, value, lastKey?) {
+
+    let query;
+    if (prop === '') {
+      query = {
+        orderByKey: true,
+        limitToFirst: batch,
+      };
+    } else {
+      query = {
+        orderByChild: prop,
+        startAt: value,
+        endAt: value + '\uf8ff',
+      };
+    }
+    if (lastKey) {
+      query['startAt'] = lastKey;
+    }
+    return this.getList({ query });
+  }
+
+  getSmarthphones(prop, value, key?) {
+    if (this.finished) {
+      return;
+    }
+    this.getPhonesWhenScroll(this.batch + 1, prop, value, this.lastKey)
+      .do(phones => {
+        //  if (prop === '') {
+        this.lastKey = _.last(phones)['$key'];
+        // }
+
+        //  let newPhones;
+        // if (prop !== '') {
+        // newPhones = _.slice(phones, 0, phones[phones.length - 1].$key);
+        // } else {
+        const newPhones = _.slice(phones, 0, this.batch);
+        // }
+
+        const currentPhones = this.smartPhones.getValue();
+        //   if (prop !== '') {
+
+        //   this.finished = true;
+
+        // } else {
+        if (this.lastKey === _.last(newPhones)['$key']) {
+          this.finished = true;
+        }
+        // }
+        if (prop === '') {
+          this.smartPhones.next(_.concat(currentPhones, newPhones));
+        }
+
+      }).take(1).subscribe();
+
+    return this.smartPhones;
+  }
+  isFInishedScroll() {
+    return this.finished;
+  }
+  getPhonesFilter(prop, value) {
+    this.listProduct = this.getPhonesWhenScroll(0, prop, value);
+
     return this.listProduct.map((item) => {
       const items = [];
 
@@ -61,51 +103,5 @@ export class ProductsListService extends AbstractFirebaseService<any> {
 
       return items;
     });
-  }
-
-  getPhonesWhenScroll(batch, lastKey?) {
-    const query = {
-      orderByKey: true,
-      limitToFirst: batch,
-    };
-    if (lastKey) {
-      query['startAt'] = lastKey;
-    }
-    return this.getList({ query });
-  }
-  getSmarthphones(key?) {
-    if (this.finished) {
-      return;
-    }
-    this.getPhonesWhenScroll(this.batch + 1, this.lastKey)
-      .do(phones => {
-        this.lastKey = _.last(phones)['$key'];
-
-        const newPhones = _.slice(phones, 0, this.batch);
-
-        const currentPhones = this.smartPhones.getValue();
-
-        if (this.lastKey === _.last(newPhones)['$key']) {
-          this.finished = true;
-        }
-        this.smartPhones.next(_.concat(currentPhones, newPhones));
-      }).take(1).subscribe();
-    //  this.smartPhones.subscribe(c => console.log(c))
-    return this.smartPhones;
-  }
-  getPhonesCamera(numMP) {
-    /* return this.listProduct.map((item) => {
-      const items = [];
-
-      item.forEach((product) => {
-        this.get(product.$key)
-          .subscribe((phone) => {
-            items.push(phone);
-          });
-      });
-      console.log(items)
-      return items;
-    });
- */
   }
 }
