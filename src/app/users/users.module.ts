@@ -10,6 +10,7 @@ import {
 
 import { UsersRoutingModule } from './users-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
+import { DashboardUsersComponent } from './components/admin/dashboard-users/dashboard-users.component';
 // import { AuthGuard } from '../shared/guards/authGuard';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AdminComponent } from './components/admin/admin.component';
     SignInFormComponent,
     SignUpFormComponent,
     ShoppingCartComponent,
-    AdminComponent
+    AdminComponent,
+    DashboardUsersComponent
   ],
   providers: [],
 })

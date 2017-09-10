@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
-export abstract class AbstractFirebaseService<T extends IEntity> {
+export abstract class AbstractFirebaseService<T extends IEntity>{
   protected abstract get entityPath(): string;
   protected list: FirebaseListObservable<any[]>;
   constructor(protected db: AngularFireDatabase, protected authService: AuthService) {

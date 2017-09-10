@@ -104,7 +104,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
           });
       });
       console.log(items)
-      return items;
+      return items;<any> 
     });
  */
   }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { AdminComponent } from './components/admin/admin.component';
+import { DashboardUsersComponent } from './components/admin/dashboard-users/dashboard-users.component';
+
 
 import {
   SignInFormComponent,
@@ -25,6 +26,10 @@ const usersRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+  },
+  {
+    path: 'admin/dashboard-users',
+    component:DashboardUsersComponent,
   }
 ];
 

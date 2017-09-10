@@ -1,28 +1,27 @@
 <p>
   admin works!
 </p>
-<div class="left" *ngFor="let smartPhone of smartPhones | async">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-5">
-      <div class="card mt-4 imgColor">
-        <div class="img">
-          <img class="card-img-top img-fluid" src="{{smartPhone.image}}" alt="">
+<div class="row">
+  <!-- Column -->
+  <div class="col-md-6 col-lg-3 col-xlg-3">
+    <a href="/users/admin/dashboard-users">
+      <div class="card card-inverse card-info">
+        <div class="box bg-info text-center">
+          <h1 class="font-light text-white">{{(smartPhones | async)?.length}}</h1>
+          <h6 class="text-white">Smartphones</h6>
         </div>
       </div>
-    </div>
-    <div class="col-md-8 col-md-offset-5">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h3 class="card-title">{{smartPhone.title}}</h3>
-          <h5>Price: 244.99$</h5>
-          <h4>Display</h4>
-          <p class="card-text">
-            {{smartPhone.display}}</p>
-          <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
-        </div>
-      </div>
-    </div>
+    </a>
   </div>
-  <a [routerLink]="['/product/', smartPhone.id]" class="btn btn-success">View more</a>
-  <hr />
+  <!-- Column -->
+  <div class="col-md-6 col-lg-3 col-xlg-3">
+    <a href="http://">
+      <div class="card card-primary card-inverse">
+        <div class="box text-center">
+          <h1 class="font-light text-white">{{(listOfUsers | async)?.length}}</h1>
+          <h6 class="text-white">Users</h6>
+        </div>
+      </div>
+    </a>
+  </div>
 </div>
