@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { AddToShoppingCartFormComponent } from './../shopping-cart/add-to-shopping-cart-form/add-to-shopping-cart-form.component';
 // import { AppModule } from './../app.module';
+import { AuthService } from './../shared/services';
+import { UserService } from './../shared/services/user.service';
+// import { ShoppingCartService } from './../shared/services/shopping-cart.service';
 
 @NgModule({
   imports: [
@@ -24,6 +27,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     ProductsListService,
+    // AuthService,
+    // UserService,
+    // ShoppingCartService,
   ],
   bootstrap: []
 })

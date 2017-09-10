@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
-
+import { Product } from './../../shared/models/product';
 
 @Injectable()
 export class ProductsListService extends AbstractFirebaseService<any> {

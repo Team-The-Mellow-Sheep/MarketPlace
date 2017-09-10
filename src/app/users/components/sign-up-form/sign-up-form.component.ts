@@ -58,8 +58,8 @@ export class SignUpFormComponent implements OnInit {
         }
       })
       .then(() => {
-        console.log('***');
-        console.log(localStorage.getItem('loggedUserId'));
+        // console.log('***');
+        // console.log(localStorage.getItem('loggedUserId'));
         this.user = new User(
           localStorage.getItem('loggedUserId'),
           formControls['username'].value,

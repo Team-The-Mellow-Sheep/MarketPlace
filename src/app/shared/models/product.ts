@@ -7,4 +7,5 @@ export class Product {
     cpu: string;
     image: string;
     url: string;
+    price: number;
 }
