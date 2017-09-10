@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
-    "firebase": "registry:dt/firebase#2.4.1+20160510002910"
+    "firebase": "registry:dt/firebase#2.4.1+20160510002910",
+    "popper.js": "registry:dt/popper.js#0.4.0+20161005184000"
   }
 }

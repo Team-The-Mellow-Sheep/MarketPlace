@@ -44,7 +44,6 @@ export class ProductsListComponent implements OnInit {
       }
     }
     if (element.checked) {
-
       let filter = element.value;
       filter = filter.split('/');
 
