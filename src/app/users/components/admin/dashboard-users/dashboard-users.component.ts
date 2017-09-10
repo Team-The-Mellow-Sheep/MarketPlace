@@ -11,7 +11,8 @@ import { ProductsListService } from '../../../../products-list/services/products
 export class DashboardUsersComponent implements OnInit {
   smartPhones = new BehaviorSubject([]);
 
-  constructor(private productsListService: ProductsListService,) {
+  // tslint:disable-next-line:one-line
+  constructor(private productsListService: ProductsListService, ){
   }
 
   @HostListener('window:scroll', [])
@@ -23,7 +24,7 @@ export class DashboardUsersComponent implements OnInit {
   }
   ngOnInit() {
     this.smartPhones = this.productsListService.getSmarthphones();
-    
+
   }
 
   onScroll() {

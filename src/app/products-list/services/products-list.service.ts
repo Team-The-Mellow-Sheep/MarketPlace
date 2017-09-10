@@ -93,6 +93,35 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     //  this.smartPhones.subscribe(c => console.log(c))
     return this.smartPhones;
   }
+
+  getPhones() {
+    const query = {
+      orderByKey: true,
+    };
+    return this.getList({ query });
+  }
+
+  getSmarthphonesAdmin(key?) {
+    if (this.finished) {
+      return;
+    }
+    this.getPhones()
+      .do(phones => {
+        this.lastKey = _.last(phones)['$key'];
+
+        const newPhones = _.slice(phones, 0);
+
+        const currentPhones = this.smartPhones.getValue();
+
+        if (this.lastKey === _.last(newPhones)['$key']) {
+          this.finished = true;
+        }
+        this.smartPhones.next(_.concat(currentPhones, newPhones));
+      }).take(1).subscribe();
+    //  this.smartPhones.subscribe(c => console.log(c))
+    return this.smartPhones;
+  }
+
   getPhonesCamera(numMP) {
     /* return this.listProduct.map((item) => {
       const items = [];

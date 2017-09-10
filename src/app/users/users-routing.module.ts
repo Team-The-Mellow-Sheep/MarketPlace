@@ -1,3 +1,4 @@
+import { DashboardSmartphonesComponent } from './components/admin/dashboard-smartphones/dashboard-smartphones.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardUsersComponent } from './components/admin/dashboard-users/dashboard-users.component';
@@ -29,7 +30,11 @@ const usersRoutes: Routes = [
   },
   {
     path: 'admin/dashboard-users',
-    component:DashboardUsersComponent,
+    component: DashboardUsersComponent,
+  },
+  {
+    path: 'admin/dashboard-smartphones',
+    component: DashboardSmartphonesComponent,
   }
 ];
 

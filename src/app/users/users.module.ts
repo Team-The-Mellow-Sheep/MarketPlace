@@ -1,6 +1,11 @@
+import { UserService } from './../shared/services/user.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsersRoutingModule } from './users-routing.module';
+import { AdminComponent } from './components/admin/admin.component';
+import { DashboardUsersComponent } from './components/admin/dashboard-users/dashboard-users.component';
+import { DashboardSmartphonesComponent } from './components/admin/dashboard-smartphones/dashboard-smartphones.component';
 
 import {
   SignInFormComponent,
@@ -8,9 +13,7 @@ import {
   ShoppingCartComponent
 } from './components';
 
-import { UsersRoutingModule } from './users-routing.module';
-import { AdminComponent } from './components/admin/admin.component';
-import { DashboardUsersComponent } from './components/admin/dashboard-users/dashboard-users.component';
+
 // import { AuthGuard } from '../shared/guards/authGuard';
 
 @NgModule({
@@ -25,8 +28,9 @@ import { DashboardUsersComponent } from './components/admin/dashboard-users/dash
     SignUpFormComponent,
     ShoppingCartComponent,
     AdminComponent,
-    DashboardUsersComponent
+    DashboardUsersComponent,
+    DashboardSmartphonesComponent
   ],
-  providers: [],
+  providers: [UserService],
 })
 export class UsersModule { }
