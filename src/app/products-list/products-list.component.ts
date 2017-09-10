@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { ProductsListService } from './services/products-list.service';
 import { AbstractFirebaseService } from '../shared/services/abstract-firebase.service';
 
@@ -17,31 +18,57 @@ export class ProductsListComponent implements OnInit {
 
   smartPhones; // = new BehaviorSubject([]);
   finished = false;
+  private filters = [];
   private filterCategori = '';
   private filterProp = '';
+
 
   constructor(
     private productsListService: ProductsListService,
   ) {
 
   }
-  private onChange(element) {
-    let filter = element.value;
-    filter = filter.split('/');
 
-    this.filterCategori = filter[0];
-    this.filterProp = filter[1];
+  private onChange(element) {
+
+    if (!element.checked) {
+      console.log('ssss ', element.value)
+      let filter = element.value;
+      filter = filter.split('/');
+      for (let i = 0; i < this.filters.length; i += 1) {
+
+        if (this.filters[i].prop === filter[0] && this.filters[i].value === filter[1]) {
+
+          this.filters.splice(i, 1);
+        }
+      }
+    }
+    if (element.checked) {
+
+      let filter = element.value;
+      filter = filter.split('/');
+
+      this.filterCategori = filter[0];
+      this.filterProp = filter[1];
+
+      if (this.filterCategori !== '') {
+
+        this.filters.push({ prop: this.filterCategori, value: this.filterProp })
+      }
+    }
   }
   filter() {
-    this.smartPhones = this.productsListService.getPhonesFilter(this.filterCategori, this.filterProp);
+    console.log('filter', this.filters)
+    this.smartPhones = this.productsListService.getPhonesFilter(this.filters);
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll(numberProduct) {
-
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      this.smartPhones = this.productsListService.getSmarthphones(this.filterCategori, this.filterProp);
-      this.finished = this.productsListService.isFInishedScroll();
+    if (this.filters.length <= 0) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        this.smartPhones = this.productsListService.getSmarthphones(this.filterCategori, this.filterProp);
+        this.finished = this.productsListService.isFInishedScroll();
+      }
     }
   }
   ngOnInit() {
@@ -52,7 +79,10 @@ export class ProductsListComponent implements OnInit {
   }
 
   onScroll() {
-    this.smartPhones = this.productsListService.getSmarthphones(this.filterCategori, this.filterProp);
+    if (this.filters.length <= 0) {
+      this.smartPhones = this.productsListService.getSmarthphones(this.filterCategori, this.filterProp);
+    }
   }
 
 }
+// raboti kato skrolna do dolu i ima nqkakuv fikter togava apendva nanowo kakto trqbwa

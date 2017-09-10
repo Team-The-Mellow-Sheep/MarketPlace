@@ -1,40 +1,41 @@
 <aside id="filter" class="col-lg-3 col-md-3 col-sm-4 col-xs-11 shadow">
   <form>
-    <input id="show-all-products" type="checkbox" checked="checked" name="show all" value="''/''" (change)="onChange($event.target)">
-    <label for="show-all-products">Show all</label>
+    <!--  <input id="show-all-products" type="checkbox" name="show all" value="''/''" [checked]="bool" (change)="onChange($event.target)">
+    <label for="show-all-products">Show all</label> -->
 
     <h4>Filter by Display</h4>
     <div class="sub-filter">
       <div>
-        <input id="filter-display-4.5" type="checkbox" name="filter-display-4.5" value="display/Type4.5" (change)="onChange($event.target)">
+        <input id="filter-display-4.5" type="checkbox" name="filter-display-4.5" value="display/Type4.5" [checked]="bool" (change)="onChange($event.target)">
         <label for="filter-display-4.5">4.5` </label>
-        <input id="filter-display-5" type="checkbox" name="filter-display-5" value="display/Type5" (change)="onChange($event.target)">
+        <input id="filter-display-5" type="checkbox" name="filter-display-5" value="display/Type5" [checked]="bool" (change)="onChange($event.target)">
         <label for="filter-display-5">5` </label>
-        <input id="filter-display-5.5" type="checkbox" name="filter-display-5.5" value="display/Type5.5" (change)="onChange($event.target)">
+        <input id="filter-display-5.5" type="checkbox" name="filter-display-5.5" value="display/Type5.5" [checked]="bool" (change)="onChange($event.target)">
         <label for="filter-display-5.5">5.5` </label>
       </div>
     </div>
     <h4>Filter by Cmera</h4>
     <div class="sub-filter">
       <div>
-        <input id="filter-camera-5-MP" type="checkbox" name="filter-camera-5-MP" value="camera/5 MP" (change)="onChange($event.target)">
+        <input id="filter-camera-5-MP" type="checkbox" name="filter-camera-5-MP" value="camera/5 MP" [checked]="bool" (change)="onChange($event.target)">
         <label for="filter--camera-5-MP">5 MP </label>
-        <input id="filter-camera-8-MP" type="checkbox" name="filter-camera-8-M" value="camera/8 MP" (change)="onChange($event.target)">
+        <input id="filter-camera-8-MP" type="checkbox" name="filter-camera-8-M" value="camera/8 MP" [checked]="bool" (change)="onChange($event.target)">
         <label for="filter--camera-8-MP">8 MP </label>
-        <input id="filter-camera-13-MP" type="checkbox" name="filter-camera-13-MP" value="camera/13 MP" (change)="onChange($event.target)">
+        <input id="filter-camera-13-MP" type="checkbox" name="filter-camera-13-MP" value="camera/13 MP" [checked]="bool" (change)="onChange($event.target)">
         <label for="filter--camera-13-MP">13 MP </label>
       </div>
     </div>
     <h4>Filter by CPU</h4>
     <div class="sub-filter">
       <div>
-
-        <label> 
-        <input type="checkbox" value="cpu/Quad-core 1.2" (change)="onChange($event.target)">Quad 1.2 
-      </label>
-        <input id="filter-cpu-Quad-core 1.4" type="checkbox" name="filter-cpu-Quad-core 1.2" value="cpu/Quad-core 1.4" (change)="onChange($event.target)">
+        <input id="filter-cpu-Quad-core 1.2" type="checkbox" name="filter-cpu-Quad-core 1.2" value="cpu/Quad-core 1.2" [checked]="bool"
+          (change)="onChange($event.target)">
+        <label or="filter-cpu-Octa-core 21.2"> Quad 1.2 </label>
+        <input id="filter-cpu-Quad-core 1.4" type="checkbox" name="filter-cpu-Quad-core 1.4" value="cpu/Quad-core 1.4" [checked]="bool"
+          (change)="onChange($event.target)">
         <label for="filter-cpu-Quad-core 1.4">Quad 1.4 </label>
-        <input id="filter-cpu-Octa-core 2.4" type="checkbox" name="filter-cpu-Octa-core 2.4" value="cpu/Octa-core 2.4" (change)="onChange($event.target)">
+        <input id="filter-cpu-Octa-core 2.4" type="checkbox" name="filter-cpu-Octa-core 2.4" value="cpu/Octa-core 2.4" [checked]="bool"
+          (change)="onChange($event.target)">
         <label for="filter-cpu-Octa-core 2.4">Octa 2.4 </label>
       </div>
     </div>

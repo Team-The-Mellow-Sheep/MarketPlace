@@ -17,7 +17,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
   batch = 4;
   lastKey = '';
   finished = false;
-  private smarthPhonesFilter: FirebaseListObservable<any[]>;
+
   private listProduct: FirebaseListObservable<any[]>;
   constructor(
     protected db: AngularFireDatabase,
@@ -38,6 +38,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
         limitToFirst: batch,
       };
     } else {
+
       query = {
         orderByChild: prop,
         startAt: value,
@@ -50,58 +51,52 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     return this.getList({ query });
   }
 
-  getSmarthphones(prop, value, key?) {
+  getSmarthphones(prop, value?, key?) {
     if (this.finished) {
       return;
     }
+
     this.getPhonesWhenScroll(this.batch + 1, prop, value, this.lastKey)
       .do(phones => {
-        //  if (prop === '') {
-        this.lastKey = _.last(phones)['$key'];
-        // }
 
-        //  let newPhones;
-        // if (prop !== '') {
-        // newPhones = _.slice(phones, 0, phones[phones.length - 1].$key);
-        // } else {
+        this.lastKey = _.last(phones)['$key'];
+
         const newPhones = _.slice(phones, 0, this.batch);
-        // }
+
 
         const currentPhones = this.smartPhones.getValue();
-        //   if (prop !== '') {
 
-        //   this.finished = true;
-
-        // } else {
         if (this.lastKey === _.last(newPhones)['$key']) {
           this.finished = true;
         }
-        // }
-        if (prop === '') {
-          this.smartPhones.next(_.concat(currentPhones, newPhones));
-        }
+
+        this.smartPhones.next(_.concat(currentPhones, newPhones));
 
       }).take(1).subscribe();
+
 
     return this.smartPhones;
   }
   isFInishedScroll() {
     return this.finished;
   }
-  getPhonesFilter(prop, value) {
-    this.listProduct = this.getPhonesWhenScroll(0, prop, value);
-
-    return this.listProduct.map((item) => {
+  getPhonesFilter(filters) {
+    for (let i = 0; i < filters.length; i += 1) {
+      const prop = filters[i].prop;
+      const value = filters[i].value;
       const items = [];
+      this.listProduct = this.getPhonesWhenScroll(0, prop, value);
+      return this.listProduct.map((item) => {
 
-      item.forEach((product) => {
-        this.get(product.$key)
-          .subscribe((phone) => {
-            items.push(phone);
-          });
+        item.forEach((product) => {
+          this.get(product.$key)
+            .subscribe((phone) => {
+              items.push(phone);
+            });
+        });
+        return items;
       });
 
-      return items;
-    });
+    }
   }
 }
