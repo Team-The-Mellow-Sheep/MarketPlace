@@ -11,12 +11,14 @@ export class User {
         this.username = username;
         this.name = name;
         this.email = email;
+        this.isAdmin = false;
     }
     userId: string;
     username: string;
     name: string;
     email: string;
     addresses: string[];
-
     shoppingCart: ShoppingCart;
+    isAdmin: boolean;
+
 }

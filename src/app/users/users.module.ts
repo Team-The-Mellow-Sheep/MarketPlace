@@ -1,6 +1,11 @@
+import { UserService } from './../shared/services/user.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsersRoutingModule } from './users-routing.module';
+import { AdminComponent } from './components/admin/admin.component';
+import { DashboardUsersComponent } from './components/admin/dashboard-users/dashboard-users.component';
+import { DashboardSmartphonesComponent } from './components/admin/dashboard-smartphones/dashboard-smartphones.component';
 
 import {
   SignInFormComponent,
@@ -8,7 +13,7 @@ import {
   ShoppingCartComponent
 } from './components';
 
-import { UsersRoutingModule } from './users-routing.module';
+
 // import { AuthGuard } from '../shared/guards/authGuard';
 
 @NgModule({
@@ -21,8 +26,11 @@ import { UsersRoutingModule } from './users-routing.module';
   declarations: [
     SignInFormComponent,
     SignUpFormComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AdminComponent,
+    DashboardUsersComponent,
+    DashboardSmartphonesComponent
   ],
-  providers: [],
+  providers: [UserService],
 })
 export class UsersModule { }

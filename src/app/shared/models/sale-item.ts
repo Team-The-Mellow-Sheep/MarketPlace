@@ -4,3 +4,4 @@ export class SaleItem {
     public quantity: number;
     public price: number;
 }
+
