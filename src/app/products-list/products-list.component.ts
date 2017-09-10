@@ -5,16 +5,28 @@ import { Observable } from 'rxjs/Observable';
 import { Params, ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AbstractFirebaseService } from '../shared/services/abstract-firebase.service';
+// import { AddToShoppingCartFormComponent } from './../shopping-cart/add-to-shopping-cart-form/add-to-shopping-cart-form.component';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormGroupDirective } from '@angular/forms';
 
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
+  // directives: [AddToShoppingCartFormComponent]
 })
 export class ProductsListComponent implements OnInit {
 
+  private formBuilder: FormBuilder;
   smartPhones = new BehaviorSubject([]);
+  addToCartForm: FormGroup;
 
   constructor(
     private productsListService: ProductsListService,
@@ -32,11 +44,19 @@ export class ProductsListComponent implements OnInit {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
+    this.addToCartForm = this.formBuilder.group({
+      quantity: ['', [Validators.min(-1)]],
+    });
+
     // window.scrollTo(0, 0);
   }
 
   onScroll() {
     this.smartPhones = this.productsListService.getSmarthphones();
+  }
+
+  onAddtoCart() {
+
   }
 
 }

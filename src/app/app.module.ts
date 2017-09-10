@@ -1,3 +1,5 @@
+import { AuthService } from './shared/services/auth.service';
+import { UserRoutersService } from './shared/services/user-routers.service';
 import { HomeModule } from './home/home.module';
 import { NotFoundModule } from './not-found/not-found.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +26,7 @@ import { NgModule } from '@angular/core';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [AuthService, UserRoutersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

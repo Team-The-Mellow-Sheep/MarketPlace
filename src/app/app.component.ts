@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
   providers: [AuthService, UserRoutersService]
 })
 export class AppComponent {
-  private isAuthenticated: boolean;
+  isAuthenticated: boolean;
   constructor(private authService: AuthService) {
     authService.authState.subscribe((state: AngularFireAuthModule) => {
       this.isAuthenticated = state !== null;
