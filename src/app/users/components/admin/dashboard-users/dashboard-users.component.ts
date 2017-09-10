@@ -1,3 +1,4 @@
+import { UserService } from './../../../../shared/services/user.service';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { AdminComponent } from '../admin.component';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -9,26 +10,14 @@ import { ProductsListService } from '../../../../products-list/services/products
   styleUrls: ['./dashboard-users.component.css']
 })
 export class DashboardUsersComponent implements OnInit {
-  smartPhones = new BehaviorSubject([]);
+  users;
 
   // tslint:disable-next-line:one-line
-  constructor(private productsListService: ProductsListService, ){
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll(numberProduct) {
-
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      this.smartPhones = this.productsListService.getSmarthphones();
-    }
+  constructor(private UserService: UserService, ){
   }
   ngOnInit() {
-    this.smartPhones = this.productsListService.getSmarthphones();
+    this.users = this.UserService.getList();
 
-  }
-
-  onScroll() {
-    this.smartPhones = this.productsListService.getSmarthphones();
   }
 
 }
