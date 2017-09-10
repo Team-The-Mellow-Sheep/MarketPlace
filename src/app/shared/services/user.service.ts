@@ -17,7 +17,7 @@ export class UserService extends AbstractFirebaseService<any> {
     constructor(protected db: AngularFireDatabase, protected authService: AuthService) {
         super(db, authService);
 
-        authService.authState.subscribe(user => {
+        this.authService.authState.subscribe(user => {
             if (user) {
                 this.userId = authService.uid;
             }
