@@ -22,7 +22,7 @@
           <td class="col-lg-1 col-md-1 col-sm-4"><span class="item-price">255 $</span></td>
           <td>
             <a class="btn btn-info" href="" [routerLink]="['/product/', product.id]"><span class="glyphicon glyphicon-info-sign">info</span></a>
-            <button class="remove-from-cart-button btn btn-danger" (click)="removeProduct"><span class="glyphicon glyphicon-remove">remove</span></button>
+            <button class="remove-from-cart-button btn btn-danger" value="{{product.id}}" (click)="removeProduct($event)"><span class="glyphicon glyphicon-remove">remove</span></button>
           </td>
         </tr>
 

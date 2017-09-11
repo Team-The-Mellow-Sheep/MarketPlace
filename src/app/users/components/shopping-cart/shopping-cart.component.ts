@@ -42,15 +42,17 @@ export class ShoppingCartComponent implements OnInit {
    ];
   */  // totalPrice = this.products.reduce((total, amount) => total + amount.price, 0);
   ngOnInit() {
-    this.product =
-      this.route.params
-        .switchMap((params: Params) => {
-          return this.productId = params['productId'];
-          // return this.productsListService.getProduct(this.productId);
-        });
-    // console.log()
-  }
-  removeProduct() {
+    /*  this.product =
+       this.route.params
+         .switchMap((params: Params) => {
+           this.productId = params['productId'];
+           //  console.log('aaaaaaaaaaaaaaaaaaaaaa ', this.productId)
+           return this.productsListService.getProduct(this.productId);
+         }); */
 
+  }
+  removeProduct(el) {
+    console.log(el.currentTarget.value)
+    this.productService.getProduct(el.currentTarget.value);
   }
 }
