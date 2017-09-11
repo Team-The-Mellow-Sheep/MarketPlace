@@ -5,6 +5,7 @@ import { AuthService } from './../../shared/services/auth.service';
 import { User } from './../models/user-model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SaleItem } from './../models/sale-item';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService extends AbstractFirebaseService<any> {
@@ -18,19 +19,25 @@ export class UserService extends AbstractFirebaseService<any> {
         super(db, authService);
 
         this.authService.authState.subscribe(user => {
+            console.log('*-*-*-*');
+            console.log(user.uid);
+
             if (user) {
-                this.userId = authService.uid;
+                this.userId = user.uid;
             }
+            console.log('*-*-*-*');
+            console.log(this.userId);
         });
+        console.log('*-*-*-*');
+        console.log(this.userId);
 
         this.currentUser = this.get(this.userId).subscribe(user => {
             if (user) {
                 this.currentUser = user;
             }
+            console.log(this.currentUser);
+
         });
-        console.log('*-*-*-*');
-        console.log(this.userId);
-        // console.log(JSON.stringify(this.currentUser));
     }
 
     userObservable;
@@ -39,16 +46,37 @@ export class UserService extends AbstractFirebaseService<any> {
         return '/users';
     }
 
-    GetShoppingCart(userId: string) {
+    getUser(queryUserId): Observable<any[]> {
+        return this.getList({
+            query: {
+                orderByChild: 'userId',
+                equalTo: queryUserId
+            }
+        });
+    }
+    GetShoppingCart() {
         return this.currentUser.shoppingCart;
     }
 
     addToCart(saleItem: SaleItem) {
-        console.log('######');
-        console.log(this.currentUser);
-        this.get(this.authService.uid).subscribe(x => this.currentUser = x);
-        this.currentUser.shoppingCart.saleItems.push(saleItem);
-        this.updateById(this.currentUser.id, this.currentUser);
+        const uu = localStorage.getItem('loggedUserId');
+        console.log(uu);
+        this.getUser(uu).subscribe(x => {
+            // this.currentUser = x[0];
+            console.log('######user');
+            console.log(x[0]);
+            const us = new User(
+                localStorage.getItem('loggedUserId'),
+                x[0].username,
+                x[0].name,
+                x[0].email,
+                x[0].addresses[0] ? x[0].addresses[0] : '',
+            );
+            console.log('######user');
+            console.log(us);
+            us.shoppingCart.saleItems.push(saleItem);
+            this.updateById(this.currentUser.id, us);
+        });
     }
 
 }

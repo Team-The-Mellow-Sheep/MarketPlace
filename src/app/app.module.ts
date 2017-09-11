@@ -12,7 +12,9 @@ import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ProductService } from './product/services/product.service';
+import { ProductsListService } from './products-list/services/products-list.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { NgModule } from '@angular/core';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [AuthService, UserRoutersService, UserService],
+  providers: [AuthService, UserRoutersService, UserService, ProductService, ProductsListService, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

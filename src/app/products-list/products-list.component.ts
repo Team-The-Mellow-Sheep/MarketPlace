@@ -1,4 +1,5 @@
 import { ProductsListService } from './services/products-list.service';
+import { ProductService } from './../product/services/product.service';
 
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -32,7 +33,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 export class ProductsListComponent implements OnInit {
 
-  private formBuilder: FormBuilder;
+  private formBuilder: FormBuilder = new FormBuilder();
   smartPhones = new BehaviorSubject([]);
   addToCartForm: FormGroup;
   isAuthenticated: boolean;
@@ -43,6 +44,7 @@ export class ProductsListComponent implements OnInit {
   user: User;
 
   constructor(
+    private productService: ProductService,
     private productsListService: ProductsListService,
     private authService: AuthService,
     private userService: UserService,
@@ -79,21 +81,38 @@ export class ProductsListComponent implements OnInit {
   }
 
   onAddtoCart(productId: string) {
-    this.productsListService.get(productId)
+    this.productService.getProduct(productId)
       .subscribe(
       result => {
         console.log('++++++');
-        console.log(JSON.stringify(result));
+        console.log(result);
 
-        this.product = result;
+        this.product = result[0];
+        const quantity = this.addToCartForm.controls['quantity'].value;
+        const saleItem = new SaleItem(productId, result[0].title, Number(quantity), result[0].price);
+        console.log('++++++auth');
+        console.log(this.authService);
+        // console.log(productId);
+        // console.log(result[0].title);
+        // console.log(quantity);
+        // console.log(result[0].price);
+
+        // this.authService.uid
+        //   .subscribe(uid => {
+            this.userService.get(this.authService.uid).subscribe(u => {
+              console.log('++++++user');
+              console.log(this.authService.uid);
+              console.log(u);
+
+              this.user = u;
+              this.userService.addToCart(saleItem);
+            });
+
+          // });
       },
       error => { console.log(error); },
       () => { });
 
-    const quantity = this.addToCartForm.controls['quantity'].value;
-    const saleItem = new SaleItem(productId, this.product.title, Number(quantity), this.product.price);
-    this.userService.get(this.authService.uid).subscribe(u => this.user = u);
-    this.userService.addToCart(saleItem);
   }
 
 }

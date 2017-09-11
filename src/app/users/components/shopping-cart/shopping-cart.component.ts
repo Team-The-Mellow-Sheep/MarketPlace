@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from './../../../shared/services/auth.service';
+import { UserService } from './../../../shared/services/user.service';
+import { ProductService } from './../../../product/services/product.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,6 +10,12 @@ import { Component } from '@angular/core';
 })
 
 export class ShoppingCartComponent {
+
+  constructor (authService: AuthService, userService: UserService, productService: ProductService) {
+
+  }
+
+
   products = [
     {
       name: 'Nokiq edikva si',

@@ -17,7 +17,7 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
     // console.log('xxxxx');
     // console.log(this.entityPath);
     // console.log(entityId);
-    return this.db.object(`${this.entityPath}/:${entityId}`);
+    return this.db.object(`${this.entityPath}/${entityId}`);
   }
 
   getList(options?: Object) {
@@ -31,6 +31,8 @@ export abstract class AbstractFirebaseService<T extends IEntity> {
   }
 
   updateById(id: string, entity: T) {
+    console.log('++++entity');
+    console.log(entity);
     this.list.update(this.entityPath + '/' + id, entity) ;
   }
 }
