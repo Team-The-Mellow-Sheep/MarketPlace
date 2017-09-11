@@ -14,6 +14,7 @@ import { Component } from '@angular/core';
   providers: []
 })
 export class AppComponent {
+
   private isAuthenticated: boolean;
 
   private user;

@@ -1,7 +1,12 @@
 export class SaleItem {
-    public productId: string;
-    public productName: string;
-    public quantity: number;
-    public price: number;
+
+    constructor (
+        productId: string,
+        productName: string,
+        quantity: number,
+        price: number
+    ) {
+
+    }
 }
 

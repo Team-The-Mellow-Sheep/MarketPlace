@@ -1,5 +1,6 @@
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { IEntity } from '../../shared/models/IEntity';
@@ -11,7 +12,11 @@ export abstract class AbstractFirebaseService<T extends IEntity>{
   constructor(protected db: AngularFireDatabase, protected authService: AuthService) {
     this.list = db.list(this.entityPath);
   }
-  get(entityId: string) {
+
+  get(entityId: string): Observable<any> {
+    // console.log('xxxxx');
+    // console.log(this.entityPath);
+    // console.log(entityId);
     return this.db.object(`${this.entityPath}/${entityId}`);
   }
 
@@ -31,6 +36,8 @@ export abstract class AbstractFirebaseService<T extends IEntity>{
   }
 
   updateById(id: string, entity: T) {
+    console.log('++++entity');
+    console.log(entity);
     this.list.update(this.entityPath + '/' + id, entity) ;
   }
 }
