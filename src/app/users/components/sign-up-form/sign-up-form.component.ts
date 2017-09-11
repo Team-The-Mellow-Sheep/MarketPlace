@@ -61,7 +61,7 @@ export class SignUpFormComponent implements OnInit {
         // console.log('***');
         // console.log(localStorage.getItem('loggedUserId'));
         this.user = new User(
-          '',
+          // null,
           localStorage.getItem('loggedUserId'),
           formControls['username'].value,
           formControls['name'].value,
