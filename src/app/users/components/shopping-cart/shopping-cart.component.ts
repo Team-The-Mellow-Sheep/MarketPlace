@@ -10,9 +10,13 @@ import { ProductService } from './../../../product/services/product.service';
 })
 
 export class ShoppingCartComponent {
-
-  constructor (authService: AuthService, userService: UserService, productService: ProductService) {
-
+  userId: string;
+  constructor(private authService: AuthService, private userService: UserService, private productService: ProductService) {
+    this.authService.authState.subscribe(id => {
+      this.userId = id.uid;
+      // this.products = this.userService.addToCart();
+      this.products = this.userService.getProduct(this.userId);
+    });
   }
 
 

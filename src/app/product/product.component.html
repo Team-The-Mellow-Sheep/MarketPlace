@@ -49,11 +49,11 @@
       </p>
       <hr>
       <div class="btn-buy" *ngIf="isAuthenticated">
-        <a class="btn btn-success" (click)="byProduct()">Buy</a>
+        <a routerLink="/users/shopCart" class="btn btn-success" (click)="byProduct()" style="cursor:pointer">Buy</a>
         <!-- routerLink="/users/shopCart" -->
       </div>
       <div class="btn-buy" *ngIf="!isAuthenticated">
-        <a routerLink="/users/sign-in" class="btn btn-success">Login to Buy</a>
+        <a routerLink="/users/sign-in" class="btn btn-success" style="cursor:pointer">Login to Buy</a>
       </div>
     </div>
   </div>

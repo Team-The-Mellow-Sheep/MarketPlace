@@ -37,11 +37,10 @@ export class ProductComponent implements OnInit {
         });
   }
   byProduct(event) {
-    // this.authService.authState.subscribe(id => this.userId = id.uid);
-    // this.product.subscribe(product =>
-    //   this.prductService.update(product[0], { 'userIds': { 'iserId': this.userId } })
-    //   // this.prductService.update(product, { userId: 'ss' })
-
-    //  );
+    this.authService.authState.subscribe(id => this.userId = id.uid);
+    this.product.subscribe(product =>
+      this.prductService.update(product[0], { 'iserId': this.userId })
+      // this.prductService.update(product, { userId: 'ss' })
+    );
   }
 }
