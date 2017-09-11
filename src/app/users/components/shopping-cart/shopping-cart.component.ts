@@ -1,5 +1,6 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsListService } from './../../../products-list/services/products-list.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../../shared/services/auth.service';
 import { UserService } from './../../../shared/services/user.service';
 import { ProductService } from './../../../product/services/product.service';
@@ -10,11 +11,15 @@ import { ProductService } from './../../../product/services/product.service';
   styleUrls: ['../user.component.css']
 })
 
-export class ShoppingCartComponent {
+export class ShoppingCartComponent implements OnInit {
   userId: string;
   products;
+  productId;
+  product;
   constructor(private authService: AuthService, private productsListService: ProductsListService,
-    private userService: UserService, private productService: ProductService) {
+    private userService: UserService, private productService: ProductService,
+    private route: ActivatedRoute
+  ) {
     this.authService.authState.subscribe(id => {
       this.userId = id.uid;
       // this.products = this.userService.addToCart();
@@ -36,6 +41,15 @@ export class ShoppingCartComponent {
      },
    ];
   */  // totalPrice = this.products.reduce((total, amount) => total + amount.price, 0);
+  ngOnInit() {
+    this.product =
+      this.route.params
+        .switchMap((params: Params) => {
+          return this.productId = params['productId'];
+          // return this.productsListService.getProduct(this.productId);
+        });
+    // console.log()
+  }
   removeProduct() {
 
   }
