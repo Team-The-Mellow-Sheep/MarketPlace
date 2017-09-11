@@ -33,4 +33,7 @@ export class ShoppingCartComponent {
     },
   ];
   totalPrice = this.products.reduce((total, amount) => total + amount.price, 0);
+  infoProduct() {
+
+  }
 }
