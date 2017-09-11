@@ -1,14 +1,21 @@
+// import { FormBuilder } from '@angular/forms/src/form_builder';
 import { SmartPhone } from './../../../../shared/models/smartphone-model';
 import { User } from './../../../../shared/models/user-model';
 import { ProductsListService } from './../../../../products-list/services/products-list.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Component, OnInit, HostListener } from '@angular/core';
-import { FormGroup } from "@angular/forms/src/forms";
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-smartphones',
   templateUrl: './dashboard-smartphones.component.html',
-  styleUrls: ['./dashboard-smartphones.component.css']
+  styleUrls: ['./dashboard-smartphones.component.css'],
+  providers: [ProductsListService]
 })
 export class DashboardSmartphonesComponent implements OnInit {
 
@@ -17,32 +24,42 @@ export class DashboardSmartphonesComponent implements OnInit {
 
   smartPhones;
 
-  constructor(private productsListService: ProductsListService, ) {
+  constructor(private productsListService: ProductsListService, private formBuilder: FormBuilder, ) {
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll(numberProduct) {
+  // @HostListener('window:scroll', [])
+  // onWindowScroll(numberProduct) {
 
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      this.smartPhones = this.productsListService.getPhones();
-    }
-  }
+  //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+  //     this.smartPhones = this.productsListService.getPhones();
+  //   }
+  // }
   ngOnInit() {
+    this.signUpForm = this.formBuilder.group({
+      title: ['', [Validators.required]],
+      camera: [''],
+      display: [''],
+      battery: [''],
+      cpu: [''],
+      memory: [''],
+      price: ['', [Validators.required]],
+    });
     this.smartPhones = this.productsListService.getPhones();
-
   }
 
-  onSignUpFormSubmit() {
+  onAddSmartPhone() {
     const formControls = this.signUpForm.controls;
+    // this.signUpForm = new FormGroup({});
     this.smartPhone = new SmartPhone(
-      formControls['model'].value,
+      formControls['title'].value,
       formControls['display'].value,
       formControls['cpu'].value,
-      formControls['model'].value,
-      formControls['model'].value,
-      formControls['model'].value,
-      formControls['price'].value,
+      formControls['camera'].value,
+      formControls['cpu'].value,
+      formControls['memory'].value,
+      formControls['price'].value
     );
+    this.productsListService.create(this.smartPhone);
   }
 
 

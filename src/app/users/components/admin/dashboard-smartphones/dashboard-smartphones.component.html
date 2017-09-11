@@ -1,24 +1,24 @@
-<form class="form-signin text-center" (ngSubmit)="onSignUpFormSubmit()" [formGroup]="signUpForm">
+<form class="form-signin text-center" (ngSubmit)="onAddSmartPhone()" [formGroup]="signUpForm">
   <h2 class="form-signin-heading">Add new smartphone</h2>
   <div class="form-group">
-    <label for="model" class="sr-only">Brand Model</label>
-    <input type="model" id="sign-up-username" class="form-control" placeholder="Brand Model" formControlName="username" required>
+    <label for="add-title" class="sr-only">Brand Model</label>
+    <input type="text" id="add-title" class="form-control" placeholder="Brand Model" formControlName="title" required>
   </div>
   <div class="form-group">
-    <label for="display" class="sr-only">Display</label>
-    <input type="text" id="display" class="form-control" placeholder="Display" formControlName="email" required>
+    <label for="add-display" class="sr-only">Display</label>
+    <input type="text" id="add-display" class="form-control" placeholder="Display" formControlName="display" required>
   </div>
   <div class="form-group">
-    <label for="camera" class="sr-only">Camera</label>
-    <input type="text" id="camera" class="form-control" placeholder="Camera" formControlName="password" required>
+    <label for="add-camera" class="sr-only">Camera</label>
+    <input type="text" id="add-camera" class="form-control" placeholder="Camera" formControlName="camera" required>
   </div>
   <div class="form-group">
-    <label for="cpu" class="sr-only">CPU</label>
-    <input type="text" id="cpu" class="form-control" placeholder="CPU" formControlName="name" required>
+    <label for="add-cpu" class="sr-only">CPU</label>
+    <input type="text" id="add-cpu" class="form-control" placeholder="CPU" formControlName="cpu" required>
   </div>
   <div class="form-group">
-    <label for="price" class="sr-only">Price</label>
-    <input type="text" id="price" class="form-control" placeholder="Price" formControlName="address">
+    <label for="add-price" class="sr-only">Price</label>
+    <input type="text" id="add-price" class="form-control" placeholder="Price" formControlName="price">
   </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
 </form>

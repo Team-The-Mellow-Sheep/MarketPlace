@@ -16,6 +16,7 @@ export class DashboardUsersComponent implements OnInit {
   users;
   formBuilder: FormBuilder;
   user: User;
+  x;
   constructor(private UserService: UserService, ) {
   }
   ngOnInit() {
@@ -34,8 +35,12 @@ export class DashboardUsersComponent implements OnInit {
     if (element.checked) {
       console.log(true);
       console.log(element.name);
-      // this.UserService.get(element.name).subscribe(u => u.isAdmin = true);
-      // this.UserService.updateById(element.name, User);
+        // this.UserService.get(element.name).subscribe(u => u.isAdmin = true);
+        // this.UserService.updateById(element.name, User);
+      //  this.x = this.UserService.getList();
+      //  this.x.forEach(el => {
+      //    console.log(el[5]['isAdmin']);
+      //  });
     } else {
       console.log(false);
       console.log(element.name);
