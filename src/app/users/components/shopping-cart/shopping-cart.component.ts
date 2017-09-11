@@ -1,6 +1,6 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsListService } from './../../../products-list/services/products-list.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from './../../../shared/services/auth.service';
 import { UserService } from './../../../shared/services/user.service';
 import { ProductService } from './../../../product/services/product.service';
@@ -11,7 +11,7 @@ import { ProductService } from './../../../product/services/product.service';
   styleUrls: ['../user.component.css']
 })
 
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent {
   userId: string;
   products;
   productId;
@@ -28,31 +28,9 @@ export class ShoppingCartComponent implements OnInit {
   }
 
 
-  /*  products = [
-     {
-       name: 'Nokiq edikva si',
-       price: 12.00,
-       imageURL: 'https://www.get.bg/media/catalog/product/n/o/nokia-130-dual-sim-gsm(1).jpg'
-     },
-     {
-       name: 'Nokia 1610',
-       price: 13.50,
-       imageURL: 'https://images-na.ssl-images-amazon.com/images/I/41UbZXPUoUL._SY445_.jpg'
-     },
-   ];
-  */  // totalPrice = this.products.reduce((total, amount) => total + amount.price, 0);
-  ngOnInit() {
-    /*  this.product =
-       this.route.params
-         .switchMap((params: Params) => {
-           this.productId = params['productId'];
-           //  console.log('aaaaaaaaaaaaaaaaaaaaaa ', this.productId)
-           return this.productsListService.getProduct(this.productId);
-         }); */
 
-  }
   removeProduct(el) {
-    console.log(el.currentTarget.value)
+    console.log(el.currentTarget.value);
     this.productService.getProduct(el.currentTarget.value);
   }
 }
