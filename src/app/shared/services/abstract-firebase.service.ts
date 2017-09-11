@@ -38,7 +38,8 @@ export abstract class AbstractFirebaseService<T extends IEntity>{
   updateById(id: string, entity: T) {
     console.log('++++entity');
     console.log(entity);
-    this.list.update(this.entityPath + '/' + id, entity) ;
+
+    this.list.set(entity.$key, entity) ;
   }
 }
 
