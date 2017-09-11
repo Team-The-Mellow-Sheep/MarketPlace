@@ -5,6 +5,7 @@ import { AuthService } from './../../shared/services/auth.service';
 import { User } from './../models/user-model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SaleItem } from './../models/sale-item';
+import { ShoppingCart } from './../models/shopping-cart';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -68,7 +69,7 @@ export class UserService extends AbstractFirebaseService<any> {
             console.log(x[0]);
             saleItem.price = 280;
             const us = new User(
-                x[0].$key,
+                // x[0].$key.slice(1),
                 localStorage.getItem('loggedUserId'),
                 x[0].username,
                 x[0].name,
@@ -78,15 +79,16 @@ export class UserService extends AbstractFirebaseService<any> {
             console.log('######user2');
             console.log(us);
 
-            us.name = 'John';
+            x[0].name = 'John';
+            x[0].shoppingCart = new ShoppingCart();
             console.log(us.shoppingCart);
-            us.shoppingCart.saleItems.push(saleItem);
-            console.log('######user');
+            x[0].shoppingCart.saleItems.push(saleItem);
+            console.log('######user3');
             console.log(saleItem);
             console.log(us);
-            console.log(x[0].$key);
+            console.log(us.$key);
 
-            this.updateById('/users/' , us);
+            this.updateById('/users/', x[0]);
         });
     }
     /* getProduct(queryProductId) {// : Observable<any> {
