@@ -85,7 +85,18 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     for (let i = 0; i < filters.length; i += 1) {
       const prop = filters[i].prop;
       const value = filters[i].value;
+      const items = [];
+      this.listProduct = this.getPhonesWhenScroll(0, prop, value);
+      return this.listProduct.map((item) => {
 
+        item.forEach((product) => {
+          this.get(product.$key)
+            .subscribe((phone) => {
+              items.push(phone);
+            });
+        });
+        return items;
+      });
     }
   }
   getPhones() {
@@ -116,23 +127,4 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     return this.smartPhones;
   }
 
-  getPhonesCamera(numMP) {
-    /* return this.listProduct.map((item) => {
-      const items = [];
-      this.listProduct = this.getPhonesWhenScroll(0, prop, value);
-      return this.listProduct.map((item) => {
- 
-        item.forEach((product) => {
-          this.get(product.$key)
-            .subscribe((phone) => {
-              items.push(phone);
-            });
-        });
-        return items;
-      });
-      console.log(items)
-      return items;<any> 
-    });
- */
-  }
 }
