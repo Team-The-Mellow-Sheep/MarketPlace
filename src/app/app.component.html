@@ -23,6 +23,11 @@
         </a>
       </li>
       <li class="nav-link" *ngIf="isAuthenticated">
+        <a  routerLink="/users/admin">
+          <span class="fa fa-admin"></span> Admin
+        </a>
+      </li>
+      <li class="nav-link" *ngIf="isAuthenticated">
         <a (click)="onSignOutClick()" routerLink="/">
           <span class="fa fa-sign-out"></span> Logout
         </a>
