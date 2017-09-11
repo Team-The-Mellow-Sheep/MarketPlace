@@ -23,6 +23,7 @@
     "@angular/router": "^4.2.4",
     "@types/firebase": "^2.4.32",
     "@types/popper.js": "^1.10.0",
+    "@types/promise-polyfill": "^6.0.0",
     "@types/tether": "^1.4.3",
     "angularfire2": "^4.0.0-rc.2",
     "bootstrap": "^4.0.0-alpha.6",
@@ -32,6 +33,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.5",
+    "promise-polyfill": "^6.0.2",
     "rxjs": "^5.4.2",
     "tether": "^1.4.0",
     "zone.js": "^0.8.14"

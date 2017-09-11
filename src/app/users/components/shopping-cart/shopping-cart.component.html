@@ -12,24 +12,24 @@
           <th>info/remove</th>
         </tr>
 
-        <tr class="row shopping-cart-item" *ngFor="let product of products">
+        <tr class="row shopping-cart-item" *ngFor="let product of products | async">
           <td class="cart-img col-lg-2 col-md-3 col-sm-6">
             <h4>
-              {{product.name}}
+              {{product.title}}
             </h4>
           </td>
-          <td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src={{product.imageURL}} alt="gsm"></td>
-          <td class="col-lg-1 col-md-1 col-sm-4"><span class="item-price">{{product.price}}</span><span> BGN</span></td>
+          <td class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img src={{product.image}} alt="gsm"></td>
+          <td class="col-lg-1 col-md-1 col-sm-4"><span class="item-price">255 $</span></td>
           <td>
-            <a class="btn btn-info" href=""><span class="glyphicon glyphicon-info-sign">info</span></a>
-            <button class="remove-from-cart-button btn btn-danger"><span class="glyphicon glyphicon-remove">remove</span></button>
+            <a class="btn btn-info" href="" [routerLink]="['/product/', product.id]"><span class="glyphicon glyphicon-info-sign">info</span></a>
+            <button class="remove-from-cart-button btn btn-danger" (click)="removeProduct"><span class="glyphicon glyphicon-remove">remove</span></button>
           </td>
         </tr>
 
       </table>
     </div>
     <div class="buy col-lg-12">
-      <span>Total:</span> <span><span id="total-price-container">{{totalPrice}}</span> BGN</span>
+      <span>Total:</span> <span><span id="total-price-container">{{totalPrice}}</span> $</span>
       <button class="btn btn-success">Buy the products</button>
     </div>
   </div>

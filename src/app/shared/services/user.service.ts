@@ -15,12 +15,13 @@ export class UserService extends AbstractFirebaseService<any> {
 
     currentUser; // : FirebaseObjectObservable<any>;
     userId: string;
+    listProduct;
     constructor(protected db: AngularFireDatabase, protected authService: AuthService) {
         super(db, authService);
 
         this.authService.authState.subscribe(user => {
             console.log('*-*-*-*');
-            console.log(user.uid);
+            // console.log(user.uid);
 
             if (user) {
                 this.userId = user.uid;
@@ -88,5 +89,31 @@ export class UserService extends AbstractFirebaseService<any> {
             this.updateById('/users/' , us);
         });
     }
+    /* getProduct(queryProductId) {// : Observable<any> {
 
+        console.log(queryProductId)
+        const items = [];
+        this.listProduct = this.getList({
+
+            query: {
+                orderByChild: 'iserId',
+                equalTo: queryProductId
+            }// queryProductId
+
+        });
+        // console.log(this.listProduct)
+        //  this.listProduct.subscribe(x => console.log(x))
+        return this.listProduct.map((item) => {
+
+            item.forEach((product) => {
+                this.get(product.$key)
+                    .subscribe((phone) => {
+                        items.push(phone);
+                    });
+            });
+            console.log('sssssssssssssssssss ', items)
+            return items;
+        });
+    }
+ */
 }
