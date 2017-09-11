@@ -66,17 +66,27 @@ export class UserService extends AbstractFirebaseService<any> {
             // this.currentUser = x[0];
             console.log('######user');
             console.log(x[0]);
+            saleItem.price = 280;
             const us = new User(
+                x[0].$key,
                 localStorage.getItem('loggedUserId'),
                 x[0].username,
                 x[0].name,
                 x[0].email,
                 x[0].addresses[0] ? x[0].addresses[0] : '',
             );
-            console.log('######user');
+            console.log('######user2');
             console.log(us);
+
+            us.name = 'John';
+            console.log(us.shoppingCart);
             us.shoppingCart.saleItems.push(saleItem);
-            this.updateById(this.currentUser.id, us);
+            console.log('######user');
+            console.log(saleItem);
+            console.log(us);
+            console.log(x[0].$key);
+
+            this.updateById('/users/' , us);
         });
     }
     /* getProduct(queryProductId) {// : Observable<any> {
