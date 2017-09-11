@@ -44,7 +44,7 @@ export class UserService extends AbstractFirebaseService<any> {
     userObservable;
 
     get entityPath(): string {
-        return '/smartphones';
+        return '/users';
     }
 
     getUser(queryUserId): Observable<any[]> {
@@ -79,7 +79,7 @@ export class UserService extends AbstractFirebaseService<any> {
             this.updateById(this.currentUser.id, us);
         });
     }
-    getProduct(queryProductId) {// : Observable<any> {
+    /* getProduct(queryProductId) {// : Observable<any> {
 
         console.log(queryProductId)
         const items = [];
@@ -105,5 +105,5 @@ export class UserService extends AbstractFirebaseService<any> {
             return items;
         });
     }
-
+ */
 }

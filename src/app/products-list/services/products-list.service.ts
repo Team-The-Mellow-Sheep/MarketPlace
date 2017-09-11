@@ -126,5 +126,31 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     //  this.smartPhones.subscribe(c => console.log(c))
     return this.smartPhones;
   }
+  getProduct(queryProductId) {// : Observable<any> {
+
+    console.log(queryProductId)
+    const items = [];
+    this.listProduct = this.getList({
+
+      query: {
+        orderByChild: 'iserId',
+        equalTo: queryProductId
+      }// queryProductId
+
+    });
+    // console.log(this.listProduct)
+    //  this.listProduct.subscribe(x => console.log(x))
+    return this.listProduct.map((item) => {
+
+      item.forEach((product) => {
+        this.get(product.$key)
+          .subscribe((phone) => {
+            items.push(phone);
+          });
+      });
+      console.log('sssssssssssssssssss ', items)
+      return items;
+    });
+  }
 
 }
