@@ -126,7 +126,7 @@ export class ProductsListService extends AbstractFirebaseService<any> {
     //  this.smartPhones.subscribe(c => console.log(c))
     return this.smartPhones;
   }
-  getProduct(queryProductId) {// : Observable<any> {
+  getProduct(queryProductId) {
 
     console.log(queryProductId)
     const items = [];
@@ -135,11 +135,10 @@ export class ProductsListService extends AbstractFirebaseService<any> {
       query: {
         orderByChild: 'iserId',
         equalTo: queryProductId
-      }// queryProductId
+      }
 
     });
-    // console.log(this.listProduct)
-    //  this.listProduct.subscribe(x => console.log(x))
+
     return this.listProduct.map((item) => {
 
       item.forEach((product) => {
@@ -148,9 +147,15 @@ export class ProductsListService extends AbstractFirebaseService<any> {
             items.push(phone);
           });
       });
-      console.log('sssssssssssssssssss ', items)
       return items;
     });
   }
-
+  removeProductFromUser(queryProductId) {
+    this.getList({
+      query: {
+        orderByChild: 'id',
+        equalTo: queryProductId
+      }
+    }); // child(id).removeValue();
+  }
 }

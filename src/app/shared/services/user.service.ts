@@ -27,17 +27,12 @@ export class UserService extends AbstractFirebaseService<any> {
             if (user) {
                 this.userId = user.uid;
             }
-            console.log('*-*-*-*');
-            console.log(this.userId);
         });
-        console.log('*-*-*-*');
-        console.log(this.userId);
 
         this.currentUser = this.get(this.userId).subscribe(user => {
             if (user) {
                 this.currentUser = user;
             }
-            console.log(this.currentUser);
 
         });
     }
@@ -64,29 +59,19 @@ export class UserService extends AbstractFirebaseService<any> {
         const uu = localStorage.getItem('loggedUserId');
         console.log(uu);
         this.getUser(uu).subscribe(x => {
-            // this.currentUser = x[0];
-            console.log('######user');
-            console.log(x[0]);
             saleItem.price = 280;
             const us = new User(
-                // x[0].$key.slice(1),
                 localStorage.getItem('loggedUserId'),
                 x[0].username,
                 x[0].name,
                 x[0].email,
                 x[0].addresses[0] ? x[0].addresses[0] : '',
             );
-            console.log('######user2');
-            console.log(us);
 
             x[0].name = 'John';
             x[0].shoppingCart = new ShoppingCart();
             console.log(us.shoppingCart);
             x[0].shoppingCart.saleItems.push(saleItem);
-            console.log('######user3');
-            console.log(saleItem);
-            console.log(us);
-            console.log(us.$key);
 
             this.updateById('/users/', x[0]);
         });
