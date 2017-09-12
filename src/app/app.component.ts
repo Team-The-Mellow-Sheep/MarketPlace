@@ -16,16 +16,25 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   private isAuthenticated: boolean;
+  private isAdmin: boolean;
 
+  private userId;
   private user;
+  private dbUser;
   username;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private userService: UserService) {
     authService.authState.subscribe((state: AngularFireAuthModule) => {
       this.isAuthenticated = state !== null;
     });
     // this.username = firebase.auth().currentUser;
     this.user = authService.user.subscribe(x => x);
+    this.userId = localStorage.getItem('loggedUserId');
+    this.dbUser = userService.getUser(this.userId).subscribe(u => {
+      this.isAdmin = u[0].isAdmin;
+      console.log('uuuuuuu');
+      console.log(u);
+    });
     console.log(this.user);
   }
   onSignOutClick() {
