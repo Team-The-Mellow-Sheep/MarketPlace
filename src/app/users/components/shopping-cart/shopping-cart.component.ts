@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsListService } from './../../../products-list/services/products-list.service';
 import { Component } from '@angular/core';
 import { AuthService } from './../../../shared/services/auth.service';
@@ -24,12 +25,10 @@ export class ShoppingCartComponent {
       this.userService.getUser(this.userId).subscribe(u => {
         this.shopCart = u[0].shoppingCart;
         this.products = u[0].shoppingCart.saleItems;
-        console.log('aaaaaa');
-        console.log(this.products);
 
       },
     err => {console.log(err); },
-      () => { console.log(this.products); }
+      () => { }
   );
     this.authService.authState.subscribe(id => {
       this.userId = id.uid;
@@ -39,20 +38,9 @@ export class ShoppingCartComponent {
   }
 
 
-  /*  products = [
-     {
-       name: 'Nokiq edikva si',
-       price: 12.00,
-       imageURL: 'https://www.get.bg/media/catalog/product/n/o/nokia-130-dual-sim-gsm(1).jpg'
-     },
-     {
-       name: 'Nokia 1610',
-       price: 13.50,
-       imageURL: 'https://images-na.ssl-images-amazon.com/images/I/41UbZXPUoUL._SY445_.jpg'
-     },
-   ];
-  */  // totalPrice = this.products.reduce((total, amount) => total + amount.price, 0);
-  removeProduct() {
 
+  removeProduct(el) {
+    // console.log(el.currentTarget.value);
+    // this.productService.getProduct(el.currentTarget.value);
   }
 }
