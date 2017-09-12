@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './../../../shared/services/auth.service';
 import { UserService } from './../../../shared/services/user.service';
 import { ProductService } from './../../../product/services/product.service';
-
+import { ShoppingCart } from './../../../shared/models/shopping-cart';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -13,8 +13,24 @@ import { ProductService } from './../../../product/services/product.service';
 export class ShoppingCartComponent {
   userId: string;
   products;
+
+  shopCart;
+  userService: UserService;
   constructor(private authService: AuthService, private productsListService: ProductsListService,
-    private userService: UserService, private productService: ProductService) {
+    userService: UserService, private productService: ProductService) {
+    this.userService = userService;
+    // let shopCart: ShoppingCart = new ShoppingCart();
+    this.userId = localStorage.getItem('loggedUserId');
+      this.userService.getUser(this.userId).subscribe(u => {
+        this.shopCart = u[0].shoppingCart;
+        this.products = u[0].shoppingCart.saleItems;
+        console.log('aaaaaa');
+        console.log(this.products);
+
+      },
+    err => {console.log(err); },
+      () => { console.log(this.products); }
+  );
     this.authService.authState.subscribe(id => {
       this.userId = id.uid;
       // this.products = this.userService.addToCart();
